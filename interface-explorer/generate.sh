@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Usage: bash blp2png.sh ~/Junk/Work/ 1.12/ ../external/
+# Usage: bash blp2png.sh ~/Junk/Work/ 1.12/ ../external-tools/
 
 if [ "$#" -lt 3 ]; then
     echo "Usage: $0 workdir outputdir toolsdir"
