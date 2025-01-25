@@ -1,0 +1,120 @@
+:root {
+    --aside-width: 320px;
+    --header-height: 50px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Header bar on the top containing logo. */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    gap: 7px;
+    background-color: darkgoldenrod;
+}
+
+header img {
+    height: 28px;
+}
+
+/* Search form right top. */
+form {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+form input {
+    font-size: medium;
+}
+
+aside {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: var(--aside-width);
+    padding: 20px;
+    overflow: auto;
+    background-color: burlywood;
+}
+
+/* Left sidebar containing navigation tree. */
+aside ul {
+    padding: 0;
+    margin: 0;
+}
+
+aside ul li {
+    margin-left: 15px;
+    list-style: square;
+    cursor: pointer;
+}
+
+aside ul li span:hover {
+    text-decoration: underline;
+}
+
+main {
+    position: fixed;
+    top: var(--header-height);
+    left: var(--aside-width);
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    padding: 20px;
+    overflow: auto;
+}
+
+main div.asset-list {
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, minmax(0, 512px));
+    gap: 30px;
+}
+
+main div.asset {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+main div.asset img {
+    max-width: 256px;
+    max-height: 256px;
+    object-fit: contain;
+    background: violet;
+    cursor: pointer;
+    margin: 20px;
+}
+
+main div.asset p {
+    background-color: antiquewhite;
+    padding: 5px 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
