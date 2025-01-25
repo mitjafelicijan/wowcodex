@@ -5,21 +5,29 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>WoW Codex</title>
-		<link rel="icon" type="image/png" href="icon.png">
-		<style>
-			body { font-family: sans-serif; padding: 1em 2em; }
-			.gray { color: #444; }
-		</style>
+		<link rel="icon" type="image/png" href="/www-assets/favicon.png">
+		<link rel="stylesheet" href="/www-assets/theme.css">
 	</head>
 
-	<body>
-		<h1>WoW Codex</h1>
+	<body class="text-white">
+		<h1 class="text-yellow">WoW Codex</h1>
 		<p>Bunch of tools and notes about Vanilla World of Warcraft. Check <a href="https://github.com/mitjafelicijan/wowcodex" target="_blank">Github repository</a> for more information.</p>
-		<ul>
-			<li>
-				<a href="/interface-explorer/">Interface explorer</a>
-				<div class="gray">Explore and search for assets from WoW.</div>
-			</li>
-		</ul>
+
+		<section class="flex-row gap-3 margin-top-4">
+			<div class="flex-row box gap-2 padding-1 align-items-center rounded-1 min-width-25">
+				<img src="icons/INV_Misc_Spyglass_03.png">
+				<div class="flex-column gap-1">
+					<a href="/interface-explorer/">Interface Explorer</a>
+					<div class="text-gray">Explore and search for assets from WoW.</div>
+				</div>
+			</div>
+			<div class="flex-row box gap-2 padding-1 align-items-center rounded-1 min-width-25">
+				<img src="icons/INV_Misc_Book_05.png">
+				<div class="flex-column gap-1">
+					<a href="/audio-library/">Audio Library</a>
+					<div class="text-gray">Listen to books available in WoW.</div>
+				</div>
+			</div>
+		</section>
 	</body>
 </html>

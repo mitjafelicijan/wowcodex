@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>WoW Codex » Interface Explorer</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoW 1.12 Interface Explorer</title>
+		<link rel="icon" type="image/png" href="/www-assets/favicon.png">
+		<link rel="stylesheet" href="/www-assets/theme.css">
+		<style>
+			.frame {
+				display: grid;
+				grid-template-columns: 360px 1fr;
+			}
+			ul li { padding-top: 0.4em; }
+			ul li span:hover { text-decoration: underline; }
+		</style>
+	</head>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="icon.png">
-</head>
+	<body>
+		<h1 class="text-yellow"><a href="/">WoW Codex</a> » Interface Explorer</h1>
 
-<body>
+		<section class="frame margin-top-4 gap-4">
+			<aside class="box rounded-1">
+				<form class="padding-2">
+					<input type="text" name="search" placeholder="Search..." autocomplete="off" value="">
+					<input type="submit" value="Search">
+				</form>
+				<div></div>
+			</aside>
+			<main class="text-white">
+				<p>
+				<strong>Search for an interface element above or select from tree.</strong>
+				</p>
+			</main>
+		</section>
 
-    <header>
-        <img src="/icon.png">
-        <p>WoW 1.12 Interface Explorer</p>
-    </header>
-
-    <form>
-        <input type="text" name="search" placeholder="Search..." autocomplete="off" value="">
-        <input type="submit" value="Search">
-    </form>
-
-    <aside></aside>
-
-    <main>
-        <p>
-            <strong>Search for an interface element above or select from tree.</strong>
-        </p>
-    </main>
-
-    <script src="explorer.js"></script>
-
-</body>
-
+		<script src="explorer.js"></script>
+	</body>
 </html>
