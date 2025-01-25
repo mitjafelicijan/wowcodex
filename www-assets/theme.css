@@ -66,6 +66,7 @@ body {
 
 .box { background: rgba(0, 0, 0, 0.5); }
 .block { display: block; }
+.hide { display: none; }
 .cursor-pointer { cursor: pointer; }
 
 a { color: #f9c23e; }
