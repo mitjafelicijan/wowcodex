@@ -14,6 +14,9 @@ body {
 .font-sans-serif { font-family: sans-serif; }
 .font-monospace { font-family: monospace; }
 
+.font-normal { font-weight: normal; }
+.font-bold { font-weight: bold; }
+
 .flex-column { display: flex; flex-direction: column; }
 .flex-row { display: flex; flex-direction: row; }
 
@@ -51,7 +54,7 @@ body {
 .rounded-5 { border-radius: 1.8em; }
 
 .size-auto { width: auto; height: auto; max-width: 100%; }
-
+.width-5 { width: 5em; }
 .min-width-15 { min-width: 15em; }
 .min-width-20 { min-width: 20em; }
 .min-width-25 { min-width: 25em; }
@@ -62,6 +65,7 @@ body {
 .align-items-center { align-items: center; }
 
 .box { background: rgba(0, 0, 0, 0.5); }
+.block { display: block; }
 .cursor-pointer { cursor: pointer; }
 
 a { color: #f9c23e; }
