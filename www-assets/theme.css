@@ -72,4 +72,4 @@ a { color: #f9c23e; }
 hr { border: 0; height: 0.1em; background: #555; }
 
 img.main-logo { height: 3em; }
-input { -webkit-appearance: none; padding: 0.2em 0.4rem; }
+input { -webkit-appearance: none; padding: 0.2em 0.4rem; font-size: inherit; }
