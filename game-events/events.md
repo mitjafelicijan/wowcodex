@@ -863,7 +863,7 @@ You probably want [PLAYER_REGEN_ENABLED](http://wowwiki.wikia.com/wiki/Events_A-
 ## PLAYER_FLAGS_CHANGED
 This event fires when a Unit's flags change (eg: due to /afk, /dnd, etc.)
 
-- **arg1**: The [UnitId](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) affected, eg: "player"
+- **arg1**: The [UnitId](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) affected, eg: "player"
 - **NOTE**: WoW appears to condense simultaneous flag changes into a single event. If you are currently AFK and not(DND) but you type /dnd you'll see two Chat Log messages ("You are no longer AFK" and "You are now DND: Do Not Disturb") but you'll only see a single PLAYER_FLAGS_CHANGED event.
 
 ## PLAYER_GUILD_UPDATE
@@ -877,7 +877,7 @@ Fired when a player logs out and possibly at other situations as well
 ## PLAYER_LEVEL_UP
 Fired when a player levels up.
 
-- **arg1**: New player level. *Note that [UnitLevel("player")](http://wowwiki.wikia.com/wiki/API_UnitLevel) will most likely return an incorrect value when called in this event handler or shortly after, so use this value.*
+- **arg1**: New player level. Note that [UnitLevel("player")](http://wowwiki.wikia.com/wiki/API_UnitLevel) will most likely return an incorrect value when called in this event handler or shortly after, so use this value.*
 - **arg2**: Hit points gained from leveling.
 - **arg3**: Mana points gained from leveling.
 - **arg4**: Talent points gained from leveling. Should always be 1 unless the player is between levels 1 to 9.
@@ -1098,7 +1098,7 @@ Fired when the client recieved a time played message.
 - **arg2**: Current time at this level
 
 ## TOOLTIP_ADD_MONEY
-*Event was removed in version 1700. See [OnTooltipAddMoney](http://wowwiki.wikia.com/wiki/API_GameTooltip_OnTooltipAddMoney)*
+Event was removed in version 1700. See [OnTooltipAddMoney](http://wowwiki.wikia.com/wiki/API_GameTooltip_OnTooltipAddMoney).
 Fired when a tooltip has money added to it.
 
 - **arg1**: tooltip name
@@ -1189,7 +1189,7 @@ Fired when your attack speed is being listed or affected
 ## UNIT_AURA
 Fired when an buff, debuff, status, or item bonus was gained by or faded from a player, NPC, or mob.
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity
 NOTE: This event is fired not only when a unit's buffs change, but when you change targets as well! -Myrrion
 
 ## UNIT_AURASTATE
@@ -1200,7 +1200,7 @@ Seems like the same as UNIT_AURA above (including arguments) but only for short 
 ## UNIT_COMBAT
 Fired when an npc or player participates in combat
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity
 - **arg2**: Action,Damage,etc (e.g. DODGE, WOUND, MISS, PARRY...)
 - **arg3**: Critical indicator (e.g. CRITICAL)
 - **arg4**: The numeric damage
@@ -1250,15 +1250,15 @@ Seen unit names:
     * player, pet, target, mouseover, party1..4, partypet1..4
 
 ## UNIT_INVENTORY_CHANGED
-Fired when the player equips or unequips an item. This is also be called if your target, [mouseover](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) or party member changes equipment (untested for hostile targets).
+Fired when the player equips or unequips an item. This is also be called if your target, [mouseover](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) or party member changes equipment (untested for hostile targets).
 This event is also raised when a new item is placed in the player's inventory, taking up a new slot. If the new item(s) are placed onto an existing stack or when two stacks already in the inventory are merged, the event is not raised. When an item is moved inside the inventory or to the bank, the event is not raised. The event *is* raised when an existing stack is split inside the player's inventory.
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity
 
 ## UNIT_LEVEL
 Fired whenever the level of a unit is submitted (e.g. when clicking a unit or someone joins the party)
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity whose level is submitted
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity whose level is submitted
 
 ## UNIT_LOYALTY
 
@@ -1267,7 +1267,7 @@ Fired whenever a unit's mana change either by usage or by regeneration.
 The event is also called when a unit is click on.
 Only gets called once, unlike its more important brother, UNIT_HEALTH.
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity
 
 ## UNIT_MAXENERGY
 Fired when a unit's maximum energy changes.
@@ -1293,12 +1293,12 @@ Fired when the unit's 3d model changes.
 ## UNIT_NAME_UPDATE
 Fired when a unit's name changes.
 
-- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity whose name changed
+- **arg1**: the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity whose name changed
 
 ## UNIT_PET
 Fired when a unit's pet changes.
 
-- **arg1**: The [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) of the entity whose pet changed
+- **arg1**: The [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) of the entity whose pet changed
 
 ## UNIT_PET_EXPERIENCE
 
@@ -1348,7 +1348,7 @@ Fired in Warsong Gulch whenever the flag status changes (picked up, dropped, etc
 Fired whenever you join the queue, change the instance, enter the instance, or leave the instance. Which is nice.
 
 ## UPDATE_BINDINGS
-Fired when the keybindings are changed.  Fired after completion of [SaveBindings()](http://wowwiki.wikia.com/wiki/API_SaveBindings" title="API SaveBindings).
+Fired when the keybindings are changed.  Fired after completion of [SaveBindings()](http://wowwiki.wikia.com/wiki/API_SaveBindings).
 
 ## UPDATE_BONUS_ACTIONBAR
 
@@ -1385,7 +1385,7 @@ Fired when there's a reason to update the chat windows.
 
 ## UPDATE_MOUSEOVER_UNIT
 Fired when the mouseover object needs to be updated.
-Fired when the target of the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId" title="API TYPE UnitId) 'mouseover' has changed.
+Fired when the target of the [UnitID](http://wowwiki.wikia.com/wiki/API_TYPE_UnitId) 'mouseover' has changed.
 No Arguments.
 
 ## UPDATE_PENDING_MAIL
