@@ -7,6 +7,7 @@ Bunch of tools and notes about Vanilla World of Warcraft.
 - Interface explorer
 - Game events browser
 - Audio Library
+- Data exporter
 
 ## TODO
 

@@ -1,0 +1,20 @@
+services:
+  mysql:
+    image: mysql:8.0.0
+    command: --sql_mode=""
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: vanilla
+    volumes:
+      - ./data/world_full_12_november_2020.sql:/docker-entrypoint-initdb.d/world_full_12_november_2020.sql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.9
+    environment:
+      - PMA_HOST=mysql
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
