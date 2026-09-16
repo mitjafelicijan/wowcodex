@@ -1,41 +1,39 @@
 # WoW Codex Tools
 
-## Convert BLP to PNG
-Batch convert BLP files while preserving the directory structure. Requires `blpconvert` utility in PATH.
+A collection of tools to process World of Warcraft API reference data and textures for a browser-based explorer.
 
+## Usage
+
+All data is prebuilt and the explorer is ready to use immediately.
+
+### Run Explorer
+Start the local development server to view the explorer.
 ```bash
-./tools/bulkblpconvert.sh <source_interface_dir> <output_dir>
+make serve
+```
+- Explorer: `http://localhost:8080`
+
+### Update Data
+If you have updated the reference files, you can regenerate the API, events, and texture manifest data.
+```bash
+make all
 ```
 
-- **source_interface_dir**: Path to the exported WoW `Interface` directory.
-- **output_dir**: Target directory for converted PNGs.
-
-## Texture Explorer
-A browser-based tool to view converted textures.
-
-### 1. Generate Manifest
-Updates `textures/manifest.json` with the current file list from the data directory.
+### Convert Textures
+If you need to refresh the texture library, use this command to convert BLP files from `reference/Interface` to `data`.
 ```bash
-python3 tools/generate_manifest.py data
-```
-
-### 2. Run
-Serve the root directory using any local web server.
-```bash
-python3 -m http.server 8000
-```
-- Texture Explorer: `http://localhost:8000/textures/`
-- API Reference: `http://localhost:8000/api/`
-
-## API Reference
-The API data is extracted from the Lua type definitions in `reference/WoWAPI`.
-
-### Update API Data
-```bash
-python3 tools/generate_api_data.py
+make convert-textures
 ```
 
 ## Requirements
-- `blpconvert`
+
+- `make`
 - `python3`
 - `bash`
+- [blpconvert](https://github.com/mitjafelicijan/blpconvert) (required for texture conversion)
+
+## Legal Notice
+
+World of Warcraft®, Warcraft® and Blizzard Entertainment® are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the United States and/or other countries.
+
+All assets, including but not limited to textures, interface files, and API reference data, are the sole and exclusive property of Blizzard Entertainment, Inc. This project is a non-commercial, fan-made tool intended for personal use and creative exploration. It is not affiliated with, endorsed by, or sponsored by Blizzard Entertainment in any way. No ownership is claimed over any Blizzard Entertainment intellectual property.
