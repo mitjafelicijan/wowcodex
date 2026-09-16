@@ -70,42 +70,46 @@ function renderAPIList(data) {
         return;
     }
 
-    data.slice(0, 500).forEach(entry => { // Limit to 500 for initial render performance
-        const div = document.createElement('div');
-        div.className = 'api-entry';
+    const entryTemplate = document.getElementById('entry-template');
+    const paramTemplate = document.getElementById('param-template');
 
-        const signature = `function ${entry.name}(${entry.params.map(p => p.name).join(', ')})`;
+    data.slice(0, 500).forEach(entry => {
+        const clone = entryTemplate.content.cloneNode(true);
         
-        let paramsHtml = '';
-        if (entry.params.length > 0) {
-            paramsHtml = '<div class="api-params"><strong>Arguments:</strong><ul>' + 
-                entry.params.map(p => `<li>${p.name ? `<code>${p.name}</code> ` : ''}<small>(${p.type})</small> ${p.description}</li>`).join('') + 
-                '</ul></div>';
-        }
+        clone.querySelector('.entry-meta').textContent = `${entry.category} / ${entry.file.replace('.d.lua', '')}`;
+        clone.querySelector('.entry-name').textContent = entry.name;
+        clone.querySelector('.entry-description').textContent = entry.description || '';
+        clone.querySelector('.entry-signature').textContent = `function ${entry.name}(${entry.params.map(p => p.name).join(', ')})`;
 
-        let returnsHtml = '';
-        if (entry.returns.length > 0) {
-            returnsHtml = '<div class="api-returns"><strong>Returns:</strong><ul>' + 
-                entry.returns.map(r => `<li>${r.name ? `<code>${r.name}</code> ` : ''}<small>(${r.type})</small> ${r.description}</li>`).join('') + 
-                '</ul></div>';
-        }
+        const renderItems = (items, wrapperSelector) => {
+            if (items && items.length > 0) {
+                const wrapper = clone.querySelector(wrapperSelector);
+                const list = wrapper.querySelector('ul');
+                items.forEach(item => {
+                    const li = paramTemplate.content.cloneNode(true);
+                    const nameEl = li.querySelector('.param-name');
+                    if (item.name) {
+                        nameEl.textContent = item.name;
+                    } else {
+                        nameEl.remove();
+                    }
+                    li.querySelector('.param-type').textContent = `(${item.type})`;
+                    li.querySelector('.param-description').textContent = item.description;
+                    list.appendChild(li);
+                });
+                wrapper.hidden = false;
+            }
+        };
 
-        div.innerHTML = `
-            <div class="api-meta">${entry.category} / ${entry.file.replace('.d.lua', '')}</div>
-            <div class="api-name">${entry.name}</div>
-            <div class="api-description">${entry.description || ''}</div>
-            <div class="api-signature">${signature}</div>
-            ${paramsHtml}
-            ${returnsHtml}
-        `;
-        container.appendChild(div);
+        renderItems(entry.params, '.entry-params');
+        renderItems(entry.returns, '.entry-returns');
+
+        container.appendChild(clone);
     });
     
     if (data.length > 500) {
         const more = document.createElement('div');
-        more.style.padding = '10px';
-        more.style.color = '#999';
-        more.style.fontSize = '12px';
+        more.className = 'more-results';
         more.textContent = `Showing first 500 of ${data.length} results. Use search to narrow down.`;
         container.appendChild(more);
     }

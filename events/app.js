@@ -52,31 +52,35 @@ function renderEventList(data) {
         return;
     }
 
-    data.slice(0, 500).forEach(entry => {
-        const div = document.createElement('div');
-        div.className = 'api-entry';
+    const eventTemplate = document.getElementById('event-template');
+    const paramTemplate = document.getElementById('param-template');
 
-        let paramsHtml = '';
+    data.slice(0, 500).forEach(entry => {
+        const clone = eventTemplate.content.cloneNode(true);
+        
+        clone.querySelector('.entry-meta').textContent = entry.category;
+        clone.querySelector('.entry-name').textContent = entry.name;
+        clone.querySelector('.entry-description').textContent = entry.description || '';
+
         if (entry.params && entry.params.length > 0) {
-            paramsHtml = '<div class="api-params"><strong>Payload:</strong><ul>' + 
-                entry.params.map(p => `<li><code>arg${p.index}</code> <small>(${p.type || 'any'})</small> ${p.description || ''}</li>`).join('') + 
-                '</ul></div>';
+            const wrapper = clone.querySelector('.entry-params');
+            const list = wrapper.querySelector('ul');
+            entry.params.forEach(p => {
+                const li = paramTemplate.content.cloneNode(true);
+                li.querySelector('.param-name').textContent = `arg${p.index}`;
+                li.querySelector('.param-type').textContent = `(${p.type || 'any'})`;
+                li.querySelector('.param-description').textContent = p.description || '';
+                list.appendChild(li);
+            });
+            wrapper.hidden = false;
         }
 
-        div.innerHTML = `
-            <div class="api-meta">${entry.category}</div>
-            <div class="api-name">${entry.name}</div>
-            <div class="api-description">${entry.description || ''}</div>
-            ${paramsHtml}
-        `;
-        container.appendChild(div);
+        container.appendChild(clone);
     });
     
     if (data.length > 500) {
         const more = document.createElement('div');
-        more.style.padding = '10px';
-        more.style.color = '#999';
-        more.style.fontSize = '12px';
+        more.className = 'more-results';
         more.textContent = `Showing first 500 of ${data.length} results. Use search to narrow down.`;
         container.appendChild(more);
     }

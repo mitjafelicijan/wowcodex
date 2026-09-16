@@ -99,7 +99,7 @@ async function init() {
 
     } catch (err) {
         console.error('Failed to load manifest:', err);
-        document.getElementById('tree').innerHTML = 'Error loading manifest.';
+        document.getElementById('tree').textContent = 'Error loading manifest.';
     }
 }
 
@@ -344,7 +344,7 @@ function renderTree(node, containerUl) {
             toggle.textContent = isExpanded ? '-' : '+';
         };
     } else {
-        toggle.innerHTML = '&nbsp;'; // Placeholder for alignment
+        toggle.textContent = '\u00A0'; // Placeholder for alignment
     }
 
     name.onclick = (e) => {
@@ -353,6 +353,15 @@ function renderTree(node, containerUl) {
     };
     
     containerUl.appendChild(li);
+}
+
+function showGalleryMessage(message) {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+    const template = document.getElementById('gallery-message-template');
+    const clone = template.content.cloneNode(true);
+    clone.querySelector('.gallery-message').textContent = message;
+    gallery.appendChild(clone);
 }
 
 function renderGallery(node) {
@@ -369,7 +378,7 @@ function renderGallery(node) {
     });
 
     if (files.length === 0) {
-        gallery.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #a0a0a0;">No textures in this directory level. Check subdirectories.</div>';
+        showGalleryMessage('No textures in this directory level. Check subdirectories.');
     }
 }
 
@@ -385,21 +394,26 @@ function renderSearchResults(term) {
     });
 
     if (results.length === 0) {
-        gallery.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #a0a0a0;">No textures found.</div>';
+        showGalleryMessage('No textures found.');
     }
 }
 
 function createCard(file) {
-    const card = document.createElement('div');
-    card.className = 'card';
+    const template = document.getElementById('card-template');
+    const clone = template.content.cloneNode(true);
+    const card = clone.querySelector('.card');
+    const img = clone.querySelector('img');
+    const info = clone.querySelector('.card-info');
+
     const imgPath = '../' + file.path;
     const displayName = file.name.replace(/\.png$/i, '');
-    card.innerHTML = `
-        <img src="${imgPath}" loading="lazy" alt="${file.name}">
-        <div class="card-info">${displayName}</div>
-    `;
+    
+    img.src = imgPath;
+    img.alt = file.name;
+    info.textContent = displayName;
+    
     card.onclick = () => showModal(file.name, imgPath);
-    return card;
+    return clone;
 }
 
 function showModal(name, path) {
@@ -446,8 +460,7 @@ function showModal(name, path) {
 }
 
 function showPlaceholder() {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #a0a0a0;">Select a directory or search for textures.</div>';
+    showGalleryMessage('Select a directory or search for textures.');
 }
 
 init();

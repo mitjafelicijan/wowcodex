@@ -256,3 +256,10 @@
     border: none;
     color: #000;
 }
+
+.gallery-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: #a0a0a0;
+}

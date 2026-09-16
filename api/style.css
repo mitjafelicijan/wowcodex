@@ -61,26 +61,30 @@
     flex: 1;
 }
 
-.api-entry {
+.entry {
     margin-bottom: 2em;
     padding-bottom: 1em;
     border-bottom: 1px solid var(--border-color);
 }
 
-.api-name {
+.entry:last-child {
+    border-bottom: none;
+}
+
+.entry-name {
     font-size: 18px;
     font-weight: bold;
     color: #000;
     margin-bottom: 5px;
 }
 
-.api-description {
+.entry-description {
     font-size: 14px;
     color: #444;
     margin-bottom: 10px;
 }
 
-.api-signature {
+.entry-signature {
     font-family: monospace;
     font-size: 13px;
     background: #f8f8f8;
@@ -91,33 +95,33 @@
     margin-bottom: 10px;
 }
 
-.api-params, .api-returns {
+.entry-params, .entry-returns {
     font-size: 13px;
     color: #444;
     margin-top: 10px;
 }
 
-.api-params ul, .api-returns ul {
+.entry-params ul, .entry-returns ul {
     margin: 5px 0;
     padding-left: 20px;
 }
 
-.api-params li, .api-returns li {
+.entry-params li, .entry-returns li {
     margin-bottom: 3px;
 }
 
-.api-params code, .api-returns code {
+.entry-params code, .entry-returns code {
     color: #000;
     background: #eee;
     padding: 1px 4px;
     font-family: monospace;
 }
 
-.api-params small, .api-returns small {
+.entry-params small, .entry-returns small {
     color: #666;
 }
 
-.api-meta {
+.entry-meta {
     font-size: 11px;
     color: #999;
     text-transform: uppercase;
@@ -126,4 +130,10 @@
 .loading, .no-results {
     color: #666;
     padding: 20px;
+}
+
+.more-results {
+    padding: 10px;
+    color: #999;
+    font-size: 12px;
 }

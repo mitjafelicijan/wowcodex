@@ -35,6 +35,31 @@
         </section>
     </main>
 
+    <template id="entry-template">
+        <div class="entry">
+            <div class="entry-meta"></div>
+            <div class="entry-name"></div>
+            <div class="entry-description"></div>
+            <div class="entry-signature"></div>
+            <div class="entry-params" hidden>
+                <strong>Arguments:</strong>
+                <ul></ul>
+            </div>
+            <div class="entry-returns" hidden>
+                <strong>Returns:</strong>
+                <ul></ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="param-template">
+        <li>
+            <code class="param-name"></code>
+            <small class="param-type"></small>
+            <span class="param-description"></span>
+        </li>
+    </template>
+
     <footer>
         <h4>Legal Notice</h4>
         <p>World of Warcraft®, Warcraft® and Blizzard Entertainment® are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the United States and/or other countries.</p>
