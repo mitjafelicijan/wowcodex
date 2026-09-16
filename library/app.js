@@ -29,6 +29,13 @@ async function init() {
             if (e.target === modalOverlay) closeModal();
         };
 
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
         // Handle initial load
         if (window.location.hash) {
             const entryId = parseInt(window.location.hash.replace('#', ''));

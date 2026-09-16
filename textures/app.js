@@ -36,8 +36,9 @@ async function init() {
 
         closeModal.onclick = () => modal.classList.add('hidden');
         
-        // Remove closing on background click
-        modal.onclick = null;
+        modal.onclick = (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        };
         
         // Close on Escape key
         window.addEventListener('keydown', (e) => {
