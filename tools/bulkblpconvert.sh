@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# Function to show usage
+usage() {
+    echo "Usage: $0 <target_directory> <output_directory>"
+    echo
+    echo "Arguments:"
+    echo "  target_directory  Path to the 'Interface' folder of WoW exported interface files."
+    echo "                    The script iterates through its subdirectories to find .blp files."
+    echo "  output_directory  The base directory where the converted .png files will be saved."
+    echo "                    The folder structure (including the 'Interface' root) will be preserved."
+    echo
+    echo "Options:"
+    echo "  -h, --help        Show this help message"
+    exit 1
+}
+
+# Check for help flags
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    usage
+fi
+
 # Target directory from first argument
 TARGET_DIR="${1%/}"
 # Output directory from second argument
@@ -7,8 +27,7 @@ OUT_DIR="${2%/}"
 
 # Validation
 if [[ -z "$TARGET_DIR" || ! -d "$TARGET_DIR" || -z "$OUT_DIR" ]]; then
-    echo "Usage: $0 <target_directory> <output_directory>"
-    exit 1
+    usage
 fi
 
 # Ensure output directory exists
@@ -46,6 +65,5 @@ for dir in "$TARGET_DIR"/*/; do
     done
     
     echo "Completed directory: $dir_name"
-    break # Only process the first directory for testing
 done
 
