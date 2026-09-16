@@ -26,22 +26,35 @@
         </div>
         
         <div id="results-view">
-            <ul id="book-list">
-                <div class="loading">Loading library...</div>
-            </ul>
+            <div id="status-message" class="loading">Loading library...</div>
+            <div id="book-shelf" class="hidden"></div>
         </div>
 
-        <div id="reader-view" class="hidden">
-            <button id="back-button">&larr; Back to Results</button>
-            <div id="book-content"></div>
+        <div id="modal-overlay" class="hidden">
+            <div id="reader-modal">
+                <button id="close-button">&times;</button>
+                <div id="book-content"></div>
+            </div>
         </div>
     </main>
 
-    <template id="book-item-template">
-        <li class="book-item">
-            <div class="book-title"></div>
-            <div class="book-meta"></div>
-        </li>
+    <template id="book-spine-template">
+        <div class="book-spine">
+            <div class="spine-title"></div>
+        </div>
+    </template>
+
+    <template id="book-reader-template">
+        <div class="reader-header">
+            <div class="reader-title-row">
+                <h1 class="reader-title"></h1>
+            </div>
+            <div class="reader-meta"></div>
+            <div class="reader-audio-container">
+                <audio controls class="reader-audio" src="" onerror="this.parentElement.style.display='none'"></audio>
+            </div>
+        </div>
+        <div class="reader-content"></div>
     </template>
 
     <footer>

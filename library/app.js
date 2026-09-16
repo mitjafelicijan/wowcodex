@@ -8,10 +8,10 @@ async function init() {
         libraryData = libraryData.filter(b => b.name && b.name.trim() !== "");
 
         const searchInput = document.getElementById('search-input');
-        const backButton = document.getElementById('back-button');
+        const closeModalButton = document.getElementById('close-button');
+        const modalOverlay = document.getElementById('modal-overlay');
 
         searchInput.oninput = () => {
-            showListView();
             const term = searchInput.value.toLowerCase();
             const filtered = libraryData.filter(book => 
                 book.name.toLowerCase().includes(term) || 
@@ -21,9 +21,12 @@ async function init() {
             renderBookList(filtered);
         };
 
-        backButton.onclick = () => {
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-            showListView();
+        closeModalButton.onclick = () => {
+            closeModal();
+        };
+
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) closeModal();
         };
 
         // Handle initial load
@@ -32,17 +35,14 @@ async function init() {
             const book = libraryData.find(b => b.entry === entryId);
             if (book) {
                 selectBook(book);
-            } else {
-                renderBookList(libraryData);
             }
-        } else {
-            renderBookList(libraryData);
         }
+        renderBookList(libraryData);
 
         // Handle browser back/forward
         window.onhashchange = () => {
             if (!window.location.hash) {
-                showListView();
+                closeModal();
             } else {
                 const entryId = parseInt(window.location.hash.replace('#', ''));
                 const book = libraryData.find(b => b.entry === entryId);
@@ -52,82 +52,97 @@ async function init() {
 
     } catch (err) {
         console.error('Failed to load library data:', err);
-        document.getElementById('book-list').innerHTML = '<div class="loading">Error loading library data.</div>';
+        const shelf = document.getElementById('book-shelf');
+        const statusMessage = document.getElementById('status-message');
+        if (shelf) shelf.classList.add('hidden');
+        if (statusMessage) {
+            statusMessage.classList.remove('hidden');
+            statusMessage.textContent = 'Error loading library data.';
+        }
     }
 }
 
-function showListView() {
-    document.getElementById('results-view').classList.remove('hidden');
-    document.getElementById('reader-view').classList.add('hidden');
-    document.getElementById('search-container').classList.remove('hidden');
+function closeModal() {
+    document.getElementById('modal-overlay').classList.add('hidden');
+    document.body.style.overflow = '';
+    
+    // Stop audio when closing modal
+    const audio = document.querySelector('.reader-audio');
+    if (audio) {
+        audio.pause();
+        audio.src = '';
+    }
+    
+    history.pushState("", document.title, window.location.pathname + window.location.search);
 }
 
-function showReaderView() {
-    document.getElementById('results-view').classList.add('hidden');
-    document.getElementById('reader-view').classList.remove('hidden');
-    document.getElementById('search-container').classList.add('hidden');
+function showModal() {
+    document.getElementById('modal-overlay').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
 }
 
 function renderBookList(data) {
-    const list = document.getElementById('book-list');
-    list.innerHTML = '';
+    const shelf = document.getElementById('book-shelf');
+    const statusMessage = document.getElementById('status-message');
+    shelf.innerHTML = '';
 
     if (data.length === 0) {
-        list.innerHTML = '<div class="loading">No matches found.</div>';
+        shelf.classList.add('hidden');
+        statusMessage.classList.remove('hidden');
+        statusMessage.textContent = 'No matches found.';
         return;
     }
 
-    const template = document.getElementById('book-item-template');
-    const limit = 200;
+    shelf.classList.remove('hidden');
+    statusMessage.classList.add('hidden');
+
+    const template = document.getElementById('book-spine-template');
+    const limit = 500;
     const itemsToShow = data.slice(0, limit);
 
     itemsToShow.forEach((book) => {
         const clone = template.content.cloneNode(true);
-        const item = clone.querySelector('.book-item');
+        const spine = clone.querySelector('.book-spine');
         
-        item.querySelector('.book-title').textContent = book.name;
-        item.querySelector('.book-meta').textContent = `${book.source.toUpperCase()} ${book.entry}`;
+        spine.querySelector('.spine-title').textContent = book.name;
+        spine.title = `${book.name} (${book.source} ${book.entry})`;
         
-        item.onclick = () => {
+        spine.onclick = () => {
             selectBook(book);
         };
 
-        list.appendChild(clone);
+        shelf.appendChild(clone);
     });
 
     if (data.length > limit) {
         const more = document.createElement('div');
         more.className = 'more-results';
         more.textContent = `Showing ${limit} of ${data.length} matches. Narrow your search for more.`;
-        list.appendChild(more);
+        shelf.appendChild(more);
     }
 }
 
 function selectBook(book) {
     window.location.hash = book.entry;
-    showReaderView();
+    showModal();
     
     const contentDiv = document.getElementById('book-content');
-    const wowheadUrl = book.source === 'item' 
-        ? `https://www.wowhead.com/classic/item=${book.entry}` 
-        : `https://www.wowhead.com/classic/object=${book.entry}`;
+    contentDiv.innerHTML = '';
 
-    contentDiv.innerHTML = `
-        <div class="reader-header">
-            <div class="reader-title-container">
-                <h1 class="reader-title">${book.name}</h1>
-                <div class="reader-meta">
-                    Source: ${book.source} (ID: ${book.entry})
-                </div>
-            </div>
-            <a href="${wowheadUrl}" target="_blank" rel="noopener" class="wowhead-link" title="View on WoWhead">
-                <img src="/general/wowhead.png" alt="WoWhead" class="wowhead-icon">
-            </a>
-        </div>
-        <div class="reader-content">${book.content}</div>
-    `;
+    const template = document.getElementById('book-reader-template');
+    const clone = template.content.cloneNode(true);
+
+    clone.querySelector('.reader-title').textContent = book.name;
+    clone.querySelector('.reader-meta').textContent = `Source: ${book.source} (ID: ${book.entry})`;
     
-    window.scrollTo(0, 0);
+    const audio = clone.querySelector('.reader-audio');
+    audio.src = `/data/Library/${book.entry}.ogg`;
+    
+    clone.querySelector('.reader-content').textContent = book.content;
+
+    contentDiv.appendChild(clone);
+    
+    document.getElementById('reader-modal').scrollTop = 0;
 }
 
 init();

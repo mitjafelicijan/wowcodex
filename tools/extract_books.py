@@ -57,6 +57,7 @@ def main():
     
     valid_page_ids = set(page_text_map.keys())
     results = []
+    seen_content = set()
 
     print("Scanning GameObjects...")
     cursor.execute("SELECT * FROM gameobject_template")
@@ -65,10 +66,19 @@ def main():
     cursor.execute("PRAGMA table_info(gameobject_template)")
     go_cols = [row[1] for row in cursor.fetchall()]
     data_indices = [i for i, name in enumerate(go_cols) if name.startswith('data')]
+    type_idx = next((i for i, name in enumerate(go_cols) if name == 'type'), -1)
     
     for row in go_rows:
+        # Filter for GAMEOBJECT_TYPE_QUESTGIVER (9)
+        if type_idx != -1 and int(row[type_idx]) != 9:
+            continue
+
         entry = int(row[0])
         name = str(row[3])
+        
+        if not name or name.strip() == "" or name.strip() == "0":
+            continue
+            
         page_id = 0
         
         for idx in data_indices:
@@ -81,55 +91,17 @@ def main():
         
         if page_id > 0:
             content = get_full_text(cursor, page_id, page_text_map)
-            if content:
-                results.append({
-                    "source": "gameobject",
-                    "name": name,
-                    "entry": entry,
-                    "content": content
-                })
-
-    print("Scanning Items...")
-    cursor.execute("SELECT * FROM item_template")
-    item_rows = cursor.fetchall()
-    cursor.execute("PRAGMA table_info(item_template)")
-    item_cols = [row[1] for row in cursor.fetchall()]
-    
-    pt_idx = -1
-    for i, col in enumerate(item_cols):
-        if col.lower() == 'pagetext':
-            pt_idx = i
-            break
-    
-    for row in item_rows:
-        entry = int(row[0])
-        name = str(row[3])
-        page_id = 0
-        if pt_idx != -1:
-            try:
-                val = int(row[pt_idx])
-                if val in valid_page_ids:
-                    page_id = val
-            except: pass
-        
-        if page_id == 0:
-            for idx in range(min(100, len(row)), min(120, len(row))):
-                try:
-                    val = int(row[idx])
-                    if val in valid_page_ids:
-                        page_id = val
-                        break
-                except: continue
-        
-        if page_id > 0:
-            content = get_full_text(cursor, page_id, page_text_map)
-            if content:
-                results.append({
-                    "source": "item",
-                    "name": name,
-                    "entry": entry,
-                    "content": content
-                })
+            if content and len(content) >= 50:
+                # Deduplicate based on normalized content
+                normalized_content = content.strip()
+                if normalized_content not in seen_content:
+                    seen_content.add(normalized_content)
+                    results.append({
+                        "source": "gameobject",
+                        "name": name,
+                        "entry": entry,
+                        "content": content
+                    })
 
     results.sort(key=lambda x: (x['name'], x['entry']))
     

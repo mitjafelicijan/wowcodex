@@ -12,7 +12,7 @@ all: manifest api events library # Run manifest, api, events, and library target
 
 convert-textures: .assure # Convert BLP files to PNG
 	@echo "Converting BLP files from reference/Interface to data..."
-	@./tools/bulkblpconvert.sh reference/Interface data
+	@bash tools/convert_blp.sh reference/Interface data
 
 manifest: .assure # Update textures/manifest.json from data
 	@echo "Generating texture manifest..."
@@ -33,6 +33,14 @@ library: .assure # Update library/data.json from reference SQL
 serve: # Start a local web server on 8080
 	@echo "Starting server at http://localhost:8080..."
 	@python3 -m http.server 8080
+
+provision-tts: # Provisions TTS local setup
+	@echo "Provisioning local TTS setup"
+	@cd tools && bash tools/provision_tts.sh
+
+convert-library: # Converts library books and documents to audio
+	@echo "Converts library books and documents to audio"
+	@cd tools/tts && . .venv/bin/activate && python ../convert_books.py
 
 clean: # Remove all generated JSON files
 	@echo "Cleaning generated files..."
