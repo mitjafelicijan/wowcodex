@@ -87,7 +87,15 @@ async function init() {
         searchInput.oninput = handleSearch;
         searchInput.onsearch = handleSearch; // Handles the 'x' button in type="search"
 
-        showPlaceholder();
+        if (allFiles.length > 0) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            allFiles.slice(0, 30).forEach(file => {
+                gallery.appendChild(createCard(file));
+            });
+        } else {
+            showPlaceholder();
+        }
 
     } catch (err) {
         console.error('Failed to load manifest:', err);
