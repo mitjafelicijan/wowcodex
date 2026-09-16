@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoW API Reference</title>
+    <title>WoW Library - 1.12.1</title>
     <link rel="stylesheet" href="/base.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="/general/favicon.png">
@@ -14,50 +14,33 @@
             <span class="title static-prefix">WoW Codex</span>
             <a href="/">Home</a>
             <a href="/textures/">Textures</a>
-            <a href="/api/" class="active">API</a>
+            <a href="/api/">API</a>
             <a href="/events/">Events</a>
-            <a href="/library/">Library</a>
+            <a href="/library/" class="active">Library</a>
         </nav>
     </header>
 
     <main id="app">
-        <aside id="sidebar">
-            <div id="search-container">
-                <input type="search" id="search-input" placeholder="Search API..." autocomplete="off">
-            </div>
-            <nav id="tree">
-                <ul id="category-list"></ul>
-            </nav>
-        </aside>
-        <section id="content">
-            <div id="api-list">
-                <div class="loading">Loading API data...</div>
-            </div>
-        </section>
+        <div id="search-container">
+            <input type="search" id="search-input" placeholder="Search for a book or document..." autocomplete="off">
+        </div>
+        
+        <div id="results-view">
+            <ul id="book-list">
+                <div class="loading">Loading library...</div>
+            </ul>
+        </div>
+
+        <div id="reader-view" class="hidden">
+            <button id="back-button">&larr; Back to Results</button>
+            <div id="book-content"></div>
+        </div>
     </main>
 
-    <template id="entry-template">
-        <div class="entry">
-            <div class="entry-meta"></div>
-            <div class="entry-name"></div>
-            <div class="entry-description"></div>
-            <div class="entry-signature"></div>
-            <div class="entry-params" hidden>
-                <strong>Arguments:</strong>
-                <ul></ul>
-            </div>
-            <div class="entry-returns" hidden>
-                <strong>Returns:</strong>
-                <ul></ul>
-            </div>
-        </div>
-    </template>
-
-    <template id="param-template">
-        <li>
-            <code class="param-name"></code>
-            <small class="param-type"></small>
-            <span class="param-description"></span>
+    <template id="book-item-template">
+        <li class="book-item">
+            <div class="book-title"></div>
+            <div class="book-meta"></div>
         </li>
     </template>
 
