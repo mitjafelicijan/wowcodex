@@ -5,10 +5,10 @@ usage() {
     echo "Usage: $0 <target_directory> <output_directory>"
     echo
     echo "Arguments:"
-    echo "  target_directory  Path to the 'Interface' folder of WoW exported interface files."
+    echo "  target_directory  Path to the 'Interface' directory of WoW exported interface files."
     echo "                    The script iterates through its subdirectories to find .blp files."
     echo "  output_directory  The base directory where the converted .png files will be saved."
-    echo "                    The folder structure (including the 'Interface' root) will be preserved."
+    echo "                    The directory structure (including the 'Interface' root) will be preserved."
     echo
     echo "Options:"
     echo "  -h, --help        Show this help message"

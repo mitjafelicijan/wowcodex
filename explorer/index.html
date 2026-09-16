@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Texture Explorer</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="title static-prefix">WoW Codex</span>
+            <a href="../index.html">Home</a>
+            <a href="index.html">Explorer</a>
+        </nav>
+    </header>
+
+    <main id="app">
+        <aside id="sidebar">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search textures..." autocomplete="off">
+            </div>
+            <nav id="tree"></nav>
+        </aside>
+        <section id="content">
+            <div id="gallery"></div>
+        </section>
+    </main>
+    <div id="modal" class="hidden">
+        <div class="modal-content">
+            <div id="modal-img-wrapper">
+                <img id="modal-img" src="" alt="">
+                <div id="selection-box" class="hidden">
+                    <div class="handle nw"></div>
+                    <div class="handle ne"></div>
+                    <div class="handle sw"></div>
+                    <div class="handle se"></div>
+                </div>
+            </div>
+            <div id="modal-info"></div>
+            <div id="tex-coord-helper">
+                <strong>SetTexCoord Calculator</strong>
+                <span style="color: #666; font-size: 10px; margin-left: 10px;">(Drag on image to select area, Right click to clear)</span>
+                <div class="coord-inputs">
+                    <input type="number" id="coord-x1" placeholder="L (px)">
+                    <input type="number" id="coord-y1" placeholder="T (px)">
+                    <input type="number" id="coord-x2" placeholder="R (px)">
+                    <input type="number" id="coord-y2" placeholder="B (px)">
+                </div>
+                <div id="coord-result"></div>
+            </div>
+            <div id="modal-downloads">
+                <a id="download-png" href="#" download>Download PNG</a> | 
+                <a id="download-blp" href="#" download>Download BLP</a>
+            </div>
+            <button id="close-modal">&times;</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
