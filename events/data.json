@@ -1,0 +1,2367 @@
+[
+  {
+    "name": "ACTIONBAR_PAGE_CHANGED",
+    "description": "Fired when the actionbar page changes, typically when you press the pageup or pagedown button.",
+    "params": [
+      {
+        "index": "1",
+        "type": "MouseButton",
+        "description": "The mouse button used to click the button."
+      }
+    ],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_HIDEGRID",
+    "description": "Fired when the actionbar numbers disappear, typically when you finish dragging something to the actionbar.",
+    "params": [],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_SHOWGRID",
+    "description": "Fired when the actionbar numbers appear, typically when you drag a spell to the actionbar.",
+    "params": [
+      {
+        "index": "1",
+        "type": "MouseButton",
+        "description": "The mouse button used to drag the spell."
+      }
+    ],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_SLOT_CHANGED",
+    "description": "Fired when any actionbar slot's contents change.",
+    "params": [
+      {
+        "index": "1",
+        "type": "the",
+        "description": "number of the slot that changed"
+      }
+    ],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_UPDATE_COOLDOWN",
+    "description": "Fired when the cooldown for an actionbar or inventory slot starts or stops. - Also fires when you log into a new area. arg1 nil|MouseButton If the cooldown is starting, the mouse button used to click the button. nil when cooldown is stopping or you are logging into a new zone.",
+    "params": [],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_UPDATE_STATE",
+    "description": "Fired when the state of anything on the actionbar changes. This includes cooldown and disabling. arg1 nil|MouseButton The mouse button used to click the button.",
+    "params": [],
+    "category": "ActionBar"
+  },
+  {
+    "name": "ACTIONBAR_UPDATE_USABLE",
+    "description": "Fired when something in the actionbar or your inventory becomes usable again (after eating or drinking a potion, for example).",
+    "params": [],
+    "category": "ActionBar"
+  },
+  {
+    "name": "UPDATE_BONUS_ACTIONBAR",
+    "description": "",
+    "params": [],
+    "category": "ActionBar"
+  },
+  {
+    "name": "AUCTION_BIDDER_LIST_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "AUCTION_HOUSE_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "AUCTION_HOUSE_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "AUCTION_ITEM_LIST_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "AUCTION_OWNED_LIST_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "NEW_AUCTION_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Auction"
+  },
+  {
+    "name": "BANKFRAME_CLOSED",
+    "description": "Fired when the bank window is closed",
+    "params": [],
+    "category": "Bank"
+  },
+  {
+    "name": "BANKFRAME_OPENED",
+    "description": "Fired when the bank frame is opened",
+    "params": [],
+    "category": "Bank"
+  },
+  {
+    "name": "PLAYERBANKBAGSLOTS_CHANGED",
+    "description": "Fired when the One of the six bag slots bank changes. Does **not** fire when an item is added to or removed from a bank bag, only when a bag is added or removed from the bag slots.",
+    "params": [],
+    "category": "Bank"
+  },
+  {
+    "name": "PLAYERBANKSLOTS_CHANGED",
+    "description": "Fired when the One of the slots in the pleyer's 24 bank slots has changed. Does **not** fire when an item is added to or removed from a bank bag.",
+    "params": [],
+    "category": "Bank"
+  },
+  {
+    "name": "PLAYER_AURAS_CHANGED",
+    "description": "Called when a buff or debuff is either applied to a unit or is removed from the player. (Further details to follow, study needed). **Druid**: This event is also called when a Druid changes Form (or changes Prowl state when in Cat Form). **arg1** - **arg9** are all nil in these cases. These args are probably nil for other classes as well. Also, this event can be called multiple times per Form change.",
+    "params": [],
+    "category": "Buff"
+  },
+  {
+    "name": "UPDATE_SHAPESHIFT_FORMS",
+    "description": "Fired when the player changes his shape",
+    "params": [],
+    "category": "Buff"
+  },
+  {
+    "name": "COMBAT_TEXT_UPDATE",
+    "description": "Fired when the player takes or avoids damage, receives heals, gains mana/energy/rage, etc. - This event is used by Blizzard's floating combat text addon. - TODO Incomplete - argument types may be wrong. arg3 nil|number For heals, the amount healed. For block/resist/absorb messages, this is the amount blocked/resisted/absorbed, or nil if all damage was avoided. For faction gain, the amount of reputation gained.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Combat message type. Known values include \"DAMAGE\", \"SPELL_DAMAGE\", \"DAMAGE_CRIT\", \"HEAL\", \"PERIODIC_HEAL\", \"HEAL_CRIT\", \"MISS\", \"DODGE\", \"PARRY\", \"BLOCK\", \"RESIST\", \"SPELL_RESISTED\", \"ABSORB\", \"SPELL_ABSORBED\", \"MANA\", \"ENERGY\", \"RAGE\", \"FOCUS\", \"SPELL_ACTIVE\", \"COMBO_POINTS\", \"AURA_START\", \"AURA_END\", \"AURA_START_HARMFUL\", \"AURA_END_HARMFUL\", \"HONOR_GAINED\", and \"FACTION\"."
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "For damage, power gain and honor gains, this is the amount taken/gained. For heals, this is the healer name. For auras, the aura name. For block/resist/absorb messages where arg3 is not nil (indicating a partial block/resist/absorb) this is the amount taken. For faction gain, this is the faction name. For the SPELL_ACTIVE message, the name of the spell (abilities like Overpower and Riposte becoming active will trigger this message)."
+      }
+    ],
+    "category": "Combat"
+  },
+  {
+    "name": "PLAYER_ENTER_COMBAT",
+    "description": "Fired when a player engages auto-attack. Note that firing a gun or a spell, or getting aggro, does NOT trigger this event. From a post by Dhrago on the WoW forums: `PLAYER_ENTER_COMBAT` and `PLAYER_LEAVE_COMBAT` are for *MELEE* combat only. They fire when you initiate autoattack and when you turn it off. However, any spell or ability that does not turn on autoattack does not trigger it. Nor does it trigger when you get aggro. You probably want [PLAYER_REGEN_ENABLED](http://wowwiki.wikia.com/wiki/Events_A-Z_(full_list)?direction=prev&amp;oldid=161492#PLAYER_REGEN_ENABLED) (happens when you lose aggro). - Unrelated to PLAYER_LEAVE_COMBAT",
+    "params": [],
+    "category": "Combat"
+  },
+  {
+    "name": "PLAYER_TARGET_CHANGED",
+    "description": "This event is fired whenever the player's target is changed, including when the target is lost. - No arguments",
+    "params": [],
+    "category": "Combat"
+  },
+  {
+    "name": "AREA_SPIRIT_HEALER_IN_RANGE",
+    "description": "",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "AREA_SPIRIT_HEALER_OUT_OF_RANGE",
+    "description": "",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "CONFIRM_XP_LOSS",
+    "description": "loss in exchange for his body back.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "CORPSE_IN_INSTANCE",
+    "description": "",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "CORPSE_IN_RANGE",
+    "description": "Fired when the player is in range of his body.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "CORPSE_OUT_OF_RANGE",
+    "description": "Fired when the player is out of range of his body.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "PLAYER_ALIVE",
+    "description": "Fired when the player: 1. Releases from death to a graveyard. 2. Feigns Death with the hunter skill. 3. Lands from a jump or fall. 4. Accepts a resurrect before releasing their spirit. This is *not* called when the player is alive after being a ghost. `PLAYER_UNGHOST` is triggered in that case.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "PLAYER_DEAD",
+    "description": "Fired when the player has died.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "PLAYER_UNGHOST",
+    "description": "Fired when the player is alive after being a ghost. Called after one of: - Performing a successful corpse run and the player accepts the 'Resurrect Now' box. - Accepting a resurrect from another player after releasing from a death. - Zoning into an instance where the player is dead. - When the player accept a resurrect from a Spirit Healer. The player is alive when this event happens. This is *not* called when the player is resurrected before releasing. PLAYER_ALIVE is triggered in that case.",
+    "params": [],
+    "category": "Death"
+  },
+  {
+    "name": "RESURRECT_REQUEST",
+    "description": "Fired when another player resurrects you",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "player name"
+      }
+    ],
+    "category": "Death"
+  },
+  {
+    "name": "GUILD_INVITE_CANCEL",
+    "description": "Fired when the guild invitation is declined.",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_INVITE_REQUEST",
+    "description": "Fired when you are invited to join a guild.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Guild inviter"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "Guild name"
+      }
+    ],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_MOTD",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_REGISTRAR_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_REGISTRAR_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_ROSTER_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "GUILD_ROSTER_UPDATE",
+    "description": "Fired when the client's guild info cache has been updated after a call to [GuildRoster()](http://wowwiki.wikia.com/wiki/API_GuildRoster).",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "PLAYER_GUILD_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "PETITION_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "PETITION_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Guild"
+  },
+  {
+    "name": "AUTOEQUIP_BIND_CONFIRM",
+    "description": "Fired when the game attempts to autobind bind-on-equip items.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "UNIT_INVENTORY_CHANGED",
+    "description": "Fired when the player attempts to equip bind on equip loot. Fired when the player equips or unequips an item. This is also be called if your target, mouseover, or party member changes equipment (untested for hostile targets). This event is also raised when a new item is placed in the player's inventory, taking up a new slot. If the new item(s) are placed onto an existing stack or when two stacks already in the inventory are merged, the event is not raised. When an item is moved inside the inventory or to the bank, the event is not raised. The event *is* raised when an existing stack is split inside the player's inventory.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) affected, ex. \"player\"."
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "BAG_CLOSED",
+    "description": "Fired when a bag is closed",
+    "params": [
+      {
+        "index": "1",
+        "type": "BagId",
+        "description": ""
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "BAG_OPEN",
+    "description": "Fired when a bag (NOTE: This is NOT fired for player containers, it's for those bag-like objects that you can remove items from but not put items into) is opened.",
+    "params": [
+      {
+        "index": "1",
+        "type": "BagId",
+        "description": ""
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "BAG_UPDATE",
+    "description": "Fired when a bags inventory changes",
+    "params": [
+      {
+        "index": "1",
+        "type": "BagId",
+        "description": ""
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "BAG_UPDATE_COOLDOWN",
+    "description": "Fired when a cooldown update call is sent to a bag",
+    "params": [
+      {
+        "index": "1",
+        "type": "BagId",
+        "description": ""
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "BIND_ENCHANT",
+    "description": "Fired when Enchanting an unbound item.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "DELETE_ITEM_CONFIRM",
+    "description": "Fired when the player attempts to destroy an item.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Item name"
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_LOCK_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_PUSH",
+    "description": "Fired when an item is pushed onto the \"inventory-stack\". For instance when you manufacture something with your trade skills or picks something up.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "The stack size (i.e. how many copies of this item fit in a single inventory slot)"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "The path to the item's icon"
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_TEXT_BEGIN",
+    "description": "Fired when an items text begins displaying",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_TEXT_CLOSED",
+    "description": "Fired when the items text has completed its viewing and is done.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_TEXT_READY",
+    "description": "Fired when the item's text can continue and is ready to be scrolled.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "ITEM_TEXT_TRANSLATION",
+    "description": "Fired when an item is in the process of being translated.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "REPLACE_ENCHANT",
+    "description": "Fired when the player must confirm an enchantment replacement.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Enchantment name"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "Item name"
+      }
+    ],
+    "category": "Item"
+  },
+  {
+    "name": "UPDATE_INVENTORY_ALERTS",
+    "description": "Fires whenever an item's durability status becomes yellow (low) or red (broken). Signals that the durability frame needs to be updated. May also fire on any durability status change, even if that change doesn't require an update to the durability frame. - Wiki also includes this as a Player event, but that doesn't seem relevant.",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "USE_BIND_CONFIRM",
+    "description": "",
+    "params": [],
+    "category": "Item"
+  },
+  {
+    "name": "CANCEL_LOOT_ROLL",
+    "description": "",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "CONFIRM_LOOT_ROLL",
+    "description": "",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "LOOT_BIND_CONFIRM",
+    "description": "Fired when the player attempts to take 'bind-on-pickup' loot",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "LOOT_CLOSED",
+    "description": "Fired when a player ceases looting a corpse.",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "LOOT_OPENED",
+    "description": "Fired when a corpse is looted",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "LOOT_SLOT_CLEARED",
+    "description": "Fired when loot is removed from a corpse.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Slot number"
+      }
+    ],
+    "category": "Loot"
+  },
+  {
+    "name": "OPEN_MASTER_LOOT_LIST",
+    "description": "",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "START_LOOT_ROLL",
+    "description": "Fired when a group loot item is being rolled on.",
+    "params": [
+      {
+        "index": "1",
+        "type": "unknown",
+        "description": "The rollID of the item being rolled on."
+      },
+      {
+        "index": "2",
+        "type": "unknown",
+        "description": "The roll time."
+      }
+    ],
+    "category": "Loot"
+  },
+  {
+    "name": "UPDATE_MASTER_LOOT_LIST",
+    "description": "",
+    "params": [],
+    "category": "Loot"
+  },
+  {
+    "name": "CLOSE_INBOX_ITEM",
+    "description": "",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_FAILED",
+    "description": "",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_INBOX_UPDATE",
+    "description": "Fired when the opened inbox changes in any way. For example when the inbox list is loaded after the frame has been opened, or when a mail item changes from new to read.",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_SEND_INFO_UPDATE",
+    "description": "Fired when an item is dragged to or from the Send Item box in an outgoing mail message.",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_SEND_SUCCESS",
+    "description": "Fired when a mail has been successfully sent to the mailbox of the recipient, it is also called when the mailbox is opened for some reason ... bug?",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "MAIL_SHOW",
+    "description": "Fired when the mailbox is opened.",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "SEND_MAIL_COD_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "SEND_MAIL_MONEY_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "UPDATE_PENDING_MAIL",
+    "description": "Fired when the player enters the world and enters/leaves an instance, if there is mail in the player's mailbox. Fired when new mail is received. Fired when mailbox window is closed if the number of mail items in the inbox changed (I.E. you deleted mail) Does not appear to trigger when auction outbid mail is received... may not in other cases as well",
+    "params": [],
+    "category": "Mail"
+  },
+  {
+    "name": "CLOSE_WORLD_MAP",
+    "description": "Fired when the world map is hidden.",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "MINIMAP_PING",
+    "description": "Fired when the minimap is pinged.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "That pinged."
+      },
+      {
+        "index": "2",
+        "type": "number",
+        "description": "x"
+      },
+      {
+        "index": "3",
+        "type": "number",
+        "description": "y"
+      }
+    ],
+    "category": "Map"
+  },
+  {
+    "name": "MINIMAP_UPDATE_ZOOM",
+    "description": "Fired when the minimap scaling factor is changed. This happens, generally, whenever the player moves indoors from outside, or vice versa. There are no arguments to this event. To test the player's location, compare the `minimapZoom` and `minimapInsideZoom` CVars with the current minimap zoom level (see [GetZoom](http://wowwiki.wikia.com/wiki/API_Minimap_GetZoom)). This event does not relate to the **+** and **-** minimap zoom buttons.",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "MINIMAP_ZONE_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "WORLD_MAP_NAME_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "WORLD_MAP_UPDATE",
+    "description": "Fired when the world map should be updated.",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "ZONE_CHANGED",
+    "description": "Fired when the player enters a new zone. Zones are the smallest named subdivions of the game world and are contained within areas (also called regions). Whenever the text over the minimap changes, this event is fired.",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "ZONE_CHANGED_INDOORS",
+    "description": "Fired when a player enters a new zone within a city.",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "ZONE_CHANGED_NEW_AREA",
+    "description": "Fired when the user enters a new zone and a new area. e.g. moving from Duskwood to Stranglethorn Vale. In interface terms, this is anytime you get a new set of channels. The ZONE_CHANGED events are mutually exclusive!",
+    "params": [],
+    "category": "Map"
+  },
+  {
+    "name": "UPDATE_MOUSEOVER_UNIT",
+    "description": "Fired when the mouseover object needs to be updated. Fired when the target of the [UnitID](lua://UnitId) 'mouseover' has changed.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "AUTOFOLLOW_BEGIN",
+    "description": "Fired when you begin automatically following an ally.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The unit you are following. Not necessarily your target (in case of right-clicking a group member's portrait or using the \"/follow\" command)."
+      }
+    ],
+    "category": "Misc"
+  },
+  {
+    "name": "AUTOFOLLOW_END",
+    "description": "Fired when the player ceases following an ally",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "BILLING_NAG_DIALOG",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CHARACTER_LIST_UPDATE",
+    "description": "TODO this doesn't appear in any documentation except Shagu's.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CINEMATIC_START",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CINEMATIC_STOP",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CLOSE_TABARD_FRAME",
+    "description": "Fired when the guild dress frame is closed",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CONFIRM_BINDER",
+    "description": "This isn't documented anywhere, so maybe it's keyboard related? Could also related to loot binding.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CONFIRM_SUMMON",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CONFIRM_TALENT_WIPE",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "CURSOR_UPDATE",
+    "description": "Fired when the player single-clicks terrain. This excludes doodads, NPCs and other PCs.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "EXECUTE_CHAT_LINE",
+    "description": "Fired when the chat line needs to be processed.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Macro to execute."
+      }
+    ],
+    "category": "Misc"
+  },
+  {
+    "name": "GOSSIP_CLOSED",
+    "description": "Fired when you close the talk window for an npc (Seems to be called twice) arg1 nil|MouseButton The mouse button used to close the window (nil if closed when you go out of range)",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "GOSSIP_ENTER_CODE",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "GOSSIP_SHOW",
+    "description": "Fired when you talk to an npc (Quest dialogue boxes and Vending boxes do not call this event)",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "IGNORELIST_UPDATE",
+    "description": "Fired when a player is added or removed from the ignore list. Event is called twice. Not certain why it is called twice.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "IGR_BILLING_NAG_DIALOG",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "INSPECT_HONOR_UPDATE",
+    "description": "See function RequestInspectHonorData",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "INSTANCE_BOOT_START",
+    "description": "Fired when the countdown to boot a player from an instance starts.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "INSTANCE_BOOT_STOP",
+    "description": "Fired when the countdown to boot a player from an instance stops.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "LOTTERY_ITEM_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "LOTTERY_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MERCHANT_CLOSED",
+    "description": "Fired when a merchant frame closes.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MERCHANT_SHOW",
+    "description": "Fired when the merchant frame is shown.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MERCHANT_UPDATE",
+    "description": "Fired when a merchant updates",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MINIGAME_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MIRROR_TIMER_PAUSE",
+    "description": "Fired when the mirror timer is paused.",
+    "params": [
+      {
+        "index": "1",
+        "type": "pause",
+        "description": "duration"
+      }
+    ],
+    "category": "Misc"
+  },
+  {
+    "name": "MIRROR_TIMER_START",
+    "description": "Fired when some sort of timer starts.",
+    "params": [
+      {
+        "index": "1",
+        "type": "timer",
+        "description": ""
+      },
+      {
+        "index": "2",
+        "type": "value",
+        "description": ""
+      },
+      {
+        "index": "3",
+        "type": "maxvalue",
+        "description": ""
+      },
+      {
+        "index": "4",
+        "type": "scale",
+        "description": ""
+      },
+      {
+        "index": "5",
+        "type": "paused",
+        "description": ""
+      },
+      {
+        "index": "6",
+        "type": "label",
+        "description": ""
+      }
+    ],
+    "category": "Misc"
+  },
+  {
+    "name": "MIRROR_TIMER_STOP",
+    "description": "Fired when a mirror timer is stopped.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "OPEN_TABARD_FRAME",
+    "description": "Fired when the guild dress frame is opened.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "PLAYER_DAMAGE_DONE_MODS",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "SELECT_FIRST_CHARACTER",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "SELECT_LAST_CHARACTER",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "START_MINIGAME",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "SUGGEST_REALM",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "TABARD_CANSAVE_CHANGED",
+    "description": "Fired when it is possible to save a tabard.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "TABARD_SAVE_PENDING",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "TAXIMAP_CLOSED",
+    "description": "Fired when the taxi frame is closed.",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "TAXIMAP_OPENED",
+    "description": "Fired when the taxi viewer is opened",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "TUTORIAL_TRIGGER",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "UPDATE_INSTANCE_INFO",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "UPDATE_LFG",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "UPDATE_LFG_TYPES",
+    "description": "---",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "UPDATE_SELECTED_CHARACTER",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "UPDATE_TICKET",
+    "description": "",
+    "params": [],
+    "category": "Misc"
+  },
+  {
+    "name": "MEETINGSTONE_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_INVITE_CANCEL",
+    "description": "Fired when you decline a party invite.",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_INVITE_REQUEST",
+    "description": "Fired when a player invite you to party.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Party leader name"
+      }
+    ],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_LEADER_CHANGED",
+    "description": "Fired when the player's leadership changed. Referred to as *buggy*.",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_LOOT_METHOD_CHANGED",
+    "description": "Fired when the party's loot method changes",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_MEMBERS_CHANGED",
+    "description": "Fired when the player's party changes. As of 1.8.3 this event also fires when players are moved around in a Raid and when a player leaves the raid. This holds true even if the changes do not affect your party within the raid. This event is called twice when the event `PARTY_LOOT_METHOD_CHANGED` is called. This event is generated whenever someone rejects an invite and your in a group, also generated obviously when someone joins or leaves the group. Also, if for instance you have 3 people in your group and you invite a 4th, it will generate 4 events. If you call `GetNumPartyMembers()` it will return 0, 1, 2, and 3. First event returing zero, 2nd event returning 1, etc etc.",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_MEMBER_DISABLE",
+    "description": "Fired when a specific party member is offline or dead",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Player Name"
+      }
+    ],
+    "category": "Party"
+  },
+  {
+    "name": "PARTY_MEMBER_ENABLE",
+    "description": "Fired when a specific party member is still connected",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Player Name"
+      }
+    ],
+    "category": "Party"
+  },
+  {
+    "name": "RAID_ROSTER_UPDATE",
+    "description": "Fired whenever a raid is formed or disbanded, players are leaving or joining a raid (unsure if rejected join requests also fire the event), or when looting rules are changed (regardless of being in raid or party!)",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "RAID_TARGET_UPDATE",
+    "description": "Fired when a raid target icon is changed or removed. Also fired when player join or leave a party or raid. - Does not get triggered if a mob wearing a raid target icon dies (the icon is removed from that mob).",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "READY_CHECK",
+    "description": "",
+    "params": [],
+    "category": "Party"
+  },
+  {
+    "name": "UNIT_MAXFOCUS",
+    "description": "Fired when a unit's maximum focus changes.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_MAXHAPPINESS",
+    "description": "Fired whenever maximum pet happiness changes.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_FOCUS",
+    "description": "Same as UNIT_MANA, except for certain classes. Hunter used to use focus, but now they use mana. But it is still used when a pets energy changes.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_HAPPINESS",
+    "description": "Fires whenever pet happiness changes.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_LOYALTY",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_PET",
+    "description": "Fired when a unit's pet changes.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) of the entity whose pet changed"
+      }
+    ],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_PET_EXPERIENCE",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "UNIT_PET_TRAINING_POINTS",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "CONFIRM_PET_UNLEARN",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "LOCALPLAYER_PET_RENAMED",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_ATTACK_START",
+    "description": "Fired when the player's pet begins attacking.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_ATTACK_STOP",
+    "description": "Fired when the player's pet ceases attack",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_BAR_HIDEGRID",
+    "description": "Fired when the pet bar should be hidden. (dismiss/die)",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_BAR_SHOWGRID",
+    "description": "Fired when the Pet bar is supposed to be displayed",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_BAR_UPDATE",
+    "description": "Fired when the pet bar is updates.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_BAR_UPDATE_COOLDOWN",
+    "description": "Fired when a pet spell cooldown starts. It is not called when cooldown ends.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_DISMISS_START",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_STABLE_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_STABLE_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_STABLE_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_STABLE_UPDATE_PAPERDOLL",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_UI_CLOSE",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PET_UI_UPDATE",
+    "description": "",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PLAYER_PET_CHANGED",
+    "description": "Fired when a player's pet changes.",
+    "params": [],
+    "category": "Pet"
+  },
+  {
+    "name": "PLAYER_COMBO_POINTS",
+    "description": "Use the function GetComboPoints(); to get the exact number of combo points you have.",
+    "params": [
+      {
+        "index": "1",
+        "type": "is",
+        "description": "always 'player' not the number of combo points you have."
+      }
+    ],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_CONTROL_GAINED",
+    "description": "Fires after the PLAYER_CONTROL_LOST event, when control has been restored to the player.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_CONTROL_LOST",
+    "description": "Fires whenever the player is unable to control the character. Examples are when afflicted by fear or when using a taxi.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_LEAVE_COMBAT",
+    "description": "Fired when the player leaves combat through death, defeat of opponents, or an ability. Does not fire if a player flees from combat on foot. - Unrelated to PLAYER_ENTER_COMBAT",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_REGEN_DISABLED",
+    "description": "Fired whenever you get aggro, as normal regen rates are disabled during combat.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_REGEN_ENABLED",
+    "description": "Fired a few seconds after ending combat, as regen rates return to normal.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "CHARACTER_POINTS_CHANGED",
+    "description": "Fired when the player's character points are changed. - TODO check if there's actually an arg1 arg1 -1|1 Number of talent points changed: -1 indicates one used (learning a talent), 1 indicates one gained (leveling)",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_CAMPING",
+    "description": "Fired when the player is camping",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_FLAGS_CHANGED",
+    "description": "This event fires when a Unit's flags change (eg: due to /afk, /dnd, etc.) **NOTE**: WoW appears to condense simultaneous flag changes into a single event. If you are currently AFK and not(DND) but you type /dnd you'll see two Chat Log messages (\"You are no longer AFK\" and \"You are now DND: Do Not Disturb\") but you'll only see a single PLAYER_FLAGS_CHANGED event.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) affected, ex. \"player\"."
+      }
+    ],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_LEVEL_UP",
+    "description": "Fired when a player levels up.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "New player level. *Note that [UnitLevel(\"player\")](http://wowwiki.wikia.com/wiki/API_UnitLevel) will most likely return an incorrect value when called in this event handler or shortly after, so use this value.*"
+      },
+      {
+        "index": "2",
+        "type": "number",
+        "description": "Hit points gained from leveling."
+      },
+      {
+        "index": "3",
+        "type": "number",
+        "description": "Mana points gained from leveling."
+      },
+      {
+        "index": "4",
+        "type": "number",
+        "description": "Talent points gained from leveling. Should always be 1 unless the player is between levels 1 to 9."
+      },
+      {
+        "index": "5",
+        "type": "number",
+        "description": "Strength increase from leveling."
+      },
+      {
+        "index": "6",
+        "type": "number",
+        "description": "Agility increase from leveling."
+      },
+      {
+        "index": "7",
+        "type": "number",
+        "description": "Stamina increase from leveling."
+      },
+      {
+        "index": "8",
+        "type": "number",
+        "description": "Intellect increase from leveling."
+      },
+      {
+        "index": "9",
+        "type": "number",
+        "description": "Spirit increase from leveling."
+      }
+    ],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_MONEY",
+    "description": "Fired whenever the player gains or looses money.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_UPDATE_RESTING",
+    "description": "Fired when the player starts or stops resting, ei when entering/leaving inns/major towns.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYER_XP_UPDATE",
+    "description": "Fired when the player's XP is updated (due quest completion or killing)",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "PLAYTIME_CHANGED",
+    "description": "Fired when the playtime state changes.",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "UPDATE_EXHAUSTION",
+    "description": "",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "UPDATE_FACTION",
+    "description": "",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "UPDATE_GM_STATUS",
+    "description": "",
+    "params": [],
+    "category": "Player"
+  },
+  {
+    "name": "BATTLEFIELDS_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "BATTLEFIELDS_SHOW",
+    "description": "",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "PLAYER_SKINNED",
+    "description": "Fired when the player's insignia is removed in a Battleground.",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "UPDATE_BATTLEFIELD_SCORE",
+    "description": "Fired in Warsong Gulch whenever the flag status changes (picked up, dropped, etc).",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "UPDATE_BATTLEFIELD_STATUS",
+    "description": "Fired whenever you join the queue, change the instance, enter the instance, or leave the instance. Which is nice.",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "DUEL_FINISHED",
+    "description": "Fired within Battlefields when certain things occur such as a flag being captured. Fired when a duel is finished.",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "DUEL_INBOUNDS",
+    "description": "Fired when the player is still in the bounds of the duel.",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "DUEL_OUTOFBOUNDS",
+    "description": "Fired when the player leaves the bounds of the duel",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "PLAYER_PVP_KILLS_CHANGED",
+    "description": "Fired when the player is challenged to a duel Fired when you slay another player",
+    "params": [
+      {
+        "index": "1",
+        "type": "opponent",
+        "description": "name"
+      }
+    ],
+    "category": "PvP"
+  },
+  {
+    "name": "PLAYER_PVP_RANK_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "PvP"
+  },
+  {
+    "name": "UNIT_PVP_UPDATE",
+    "description": "Fired when the UI is loaded, and when player PVP status is changed or updated.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "The unit whose pvp status has changed (ie. \"player\")"
+      }
+    ],
+    "category": "PvP"
+  },
+  {
+    "name": "UNIT_QUEST_LOG_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_ACCEPT_CONFIRM",
+    "description": "This event fires when an escort quest is started by another player. A dialog appears asking if the player also wants to start the quest.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "NPC name?"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "Quest name?"
+      }
+    ],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_COMPLETE",
+    "description": "Fired when the player hits the \"Continue\" button in the quest-information page, before the \"Complete Quest\" button. In other words, it fires when you are given the option to complete a quest, but before you actually complete the quest.",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_DETAIL",
+    "description": "Fired when the player is given a more detailed view of his quest.",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_FINISHED",
+    "description": "Fired whenever the quest frame changes (Detail to Progress to Reward, etc.) or is closed.",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_GREETING",
+    "description": "Fired when a quest is offered",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_ITEM_UPDATE",
+    "description": "Fired when the quest items are updated",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_LOG_UPDATE",
+    "description": "This event is fired very often. This includes, but is not limited to: - viewing a quest for the first time in a session in the Quest Log - (once for each quest?) every time the player changes zones across an instance boundry - every time the player picks up a non-grey item - every time the player performs a quest activity, such as killing a mob for a quest",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_PROGRESS",
+    "description": "Fired when a player is viewing the status of their quest.",
+    "params": [],
+    "category": "Quest"
+  },
+  {
+    "name": "QUEST_WATCH_UPDATE",
+    "description": "Fired just before a quest goal was completed. At this point the game client's quest data is not yet updated, but will be after a subsequent QUEST_LOG_UPDATE event. TODO Incomplete - does 1.12 have arg1?",
+    "params": [
+      {
+        "index": "1",
+        "type": "unknown",
+        "description": "questIndex (not watch index)"
+      }
+    ],
+    "category": "Quest"
+  },
+  {
+    "name": "UNIT_SPELLMISS",
+    "description": "Fired when a spell misses",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": ""
+      },
+      {
+        "index": "2",
+        "type": "CombatMessage",
+        "description": ""
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "CURRENT_SPELL_CAST_CHANGED",
+    "description": "Fired when the spell being cast is changed.",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "LEARNED_SPELL_IN_TAB",
+    "description": "Fired when a new spell/ability is added to the spellbook. e.g. When training a new or a higher level spell/ability.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Number of the tab which the spell/ability is added to"
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "SKILL_LINES_CHANGED",
+    "description": "TODO documentation from modern wiki and might be wrong. Fired when: 1. Spellbook initially loads on client initialization. (Attempting to use GetSpellName before this is complete will result in a UI error. Note: This event happens after ADDON_LOADED and VARIABLES_LOADED.) 2. Learning new stuff that goes in the spellbook. 3. Opening the spellbook. 4. Equipping/Removing/Swapping primary weapon. (Changes the Attack icon) 5. UpdateSpells() function is called, which is used throughout the spellbook. 6. On regular intervals for no apparent reason. arg1 nil|MouseButton",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_CHANNEL_START",
+    "description": "Fired when a spellcaster begins channelling - On version 1.2.1, this event doesnt seem to work.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Duration (in milliseconds)"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "Spell Name"
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_CHANNEL_STOP",
+    "description": "",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_CHANNEL_UPDATE",
+    "description": "Fired when a channelling spell is updated.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Remaining duration in milliseconds."
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_DELAYED",
+    "description": "Fired when a spellcast duration is increased",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Disruption time"
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_FAILED",
+    "description": "Fired when a spell fails.",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_INTERRUPTED",
+    "description": "Fired when a spellcast is interrupted",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_START",
+    "description": "Fired when a spellcast is begun. This event seems to work if the spell has a casting time. For instant, there is no SPELLCAST_START but SPELLCAST_STOP.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Spell Name"
+      },
+      {
+        "index": "2",
+        "type": "number",
+        "description": "Duration (arg2 seems to be in milliseconds ex. 1.5 second cast time shows as 1500"
+      }
+    ],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLCAST_STOP",
+    "description": "Fired when a spell cast stops. Called twice when the spell is channelled. Once at start, once at completion.",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELLS_CHANGED",
+    "description": "Fired when: 1. Learning or Unlearning anything in spellbook. 2. Opening or Navigating through spellbook. 3. Changing or Equiping weapons, which changes the Attack icon in spellbook. 4. On regular intervals for no apparent reason. - nil when the char learns stuff. Also when changing weapons and shapeshifting. - number when the user opens the spellbook. - MouseButton when using the mouse to open the spellbook or to browse through the pages and tabs of the open spellbook. arg1 nil|number|MouseButton",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELL_UPDATE_COOLDOWN",
+    "description": "Fired when spell cooldown starts. - If the spell is triggered by keypress, arg1 is the [GetTime()](http://wowwiki.wikia.com/wiki/API_GetTime) output in string format. - Otherwise, arg1 is mousebutton used. arg1 string|MouseButton",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "SPELL_UPDATE_USABLE",
+    "description": "Fires when you enter combat or die.",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "START_AUTOREPEAT_SPELL",
+    "description": "",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "STOP_AUTOREPEAT_SPELL",
+    "description": "",
+    "params": [],
+    "category": "Spell"
+  },
+  {
+    "name": "ADDON_ACTION_FORBIDDEN",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "ADDON_LOADED",
+    "description": "This event fires whenever an AddOn is loaded (fires once for each AddOn loaded if multiple AddOns are being loaded), whether that is during the inital Loading Phase or when an AddOn is loaded using the LoadAddOn(\"addonname\") or UIParentLoadAddon(\"addonname\") function. This event always fires after that Saved Variables of the AddOn that just finished loading have been loaded from the disk.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Name of the AddOn that was just loaded."
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "CVAR_UPDATE",
+    "description": "Fired when a CVar is changed",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "cvarname"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "value"
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "DISPLAY_SIZE_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "GM_PLAYER_INFO",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "GMSURVEY_DISPLAY",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "LOGOUT_CANCEL",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "MACRO_ACTION_FORBIDDEN",
+    "description": "Sent when a macro tries use actions that are always forbidden - TODO Incomplete - Possible arg1 of \"UNKNOWN()\"",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "MEMORY_EXHAUSTED",
+    "description": "Fired when all memory allocated to the UI is exhausted.",
+    "params": [
+      {
+        "index": "1",
+        "type": "number",
+        "description": "Current memory limit (in MB)."
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "MEMORY_RECOVERED",
+    "description": "Fired when WoW recovers from an out of memory error.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "PLAYER_ENTERING_WORLD",
+    "description": "Fired when the player enters the world, enters/leaves an instance, or respawns at a graveyard. Also fires any other time the player sees a loading screen. To check if the player is entering an instance, check [GetPlayerMapPosition](http://wowwiki.wikia.com/wiki/API_GetPlayerMapPosition) to see if both X and Y are zero.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "PLAYER_LEAVING_WORLD",
+    "description": "Fired when a player logs out and possibly at other situations as well",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "PLAYER_LOGIN",
+    "description": "Triggered immediately before PLAYER_ENTERING_WORLD on login and UI Reload, but NOT when entering/leaving instances.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "PLAYER_LOGOUT",
+    "description": "Sent when the player logs out or the UI is reloaded, after PLAYER_LEAVING_WORLD, but before variables are saved.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "PLAYER_QUITING",
+    "description": "Fired when the player hits the quit button.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "SCREENSHOT_FAILED",
+    "description": "Fired when a screenshot fails.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "SCREENSHOT_SUCCEEDED",
+    "description": "Fired when a screenshot is successfully taken.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "SYSMSG",
+    "description": "Fired when a system message occurs.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "message"
+      },
+      {
+        "index": "2",
+        "type": "number",
+        "description": "red"
+      },
+      {
+        "index": "3",
+        "type": "number",
+        "description": "green"
+      },
+      {
+        "index": "4",
+        "type": "number",
+        "description": "blue"
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "TIME_PLAYED_MSG",
+    "description": "Fired when the client recieved a time played message.",
+    "params": [
+      {
+        "index": "1",
+        "type": "Total",
+        "description": "time"
+      },
+      {
+        "index": "2",
+        "type": "Current",
+        "description": "time at this level"
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "UI_ERROR_MESSAGE",
+    "description": "Fired when the interface creates an error message. These are the red messages that show in the top middle of the screen. \"Your inventory is full.\" is one example.",
+    "params": [
+      {
+        "index": "1",
+        "type": "message",
+        "description": ""
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "UI_INFO_MESSAGE",
+    "description": "Fired when the interface generates a message. These are the yellow messages in the top middle of the window. \"No fish are hooked.\" is one example.",
+    "params": [
+      {
+        "index": "1",
+        "type": "message",
+        "description": ""
+      }
+    ],
+    "category": "System"
+  },
+  {
+    "name": "UPDATE_BINDINGS",
+    "description": "Fired when the keybindings are changed. Fired after completion of [SaveBindings()](http://wowwiki.wikia.com/wiki/API_SaveBindings\" title=\"API SaveBindings).",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "UPDATE_MACROS",
+    "description": "",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "VARIABLES_LOADED",
+    "description": "Fired during the loading phase of the UI to indicate that the Saved Variables of all AddOns that will be loaded during the initial load (or reload) of the UI have have been read into memory from their files.",
+    "params": [],
+    "category": "System"
+  },
+  {
+    "name": "CLEAR_TOOLTIP",
+    "description": "Fired when the tooltip needs to be wiped",
+    "params": [],
+    "category": "Tooltip"
+  },
+  {
+    "name": "SHOW_COMPARE_TOOLTIP",
+    "description": "",
+    "params": [],
+    "category": "Tooltip"
+  },
+  {
+    "name": "TOOLTIP_ADD_MONEY",
+    "description": "*Event was removed in version 1700. See [OnTooltipAddMoney](http://wowwiki.wikia.com/wiki/API_GameTooltip_OnTooltipAddMoney)* Fired when a tooltip has money added to it.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Tooltip name"
+      },
+      {
+        "index": "2",
+        "type": "number",
+        "description": "Money amount"
+      }
+    ],
+    "category": "Tooltip"
+  },
+  {
+    "name": "TOOLTIP_ANCHOR_DEFAULT",
+    "description": "Fired when the tooltip anchor should be reset",
+    "params": [],
+    "category": "Tooltip"
+  },
+  {
+    "name": "PLAYER_TRADE_MONEY",
+    "description": "Fired when the player trades money",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_ACCEPT_UPDATE",
+    "description": "Fired when the status of the player and target accept buttons has changed arg1 0|1 Player has agreed to the trade (1) or not (0) arg2 0|1 Target has agreed to the trade (1) or not (0)",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_CLOSED",
+    "description": "",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_MONEY_CHANGED",
+    "description": "Fired when the trade window's money value is changed.",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_PLAYER_ITEM_CHANGED",
+    "description": "Fired when the specified player itme will be changed by the trade.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Item"
+      }
+    ],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_REPLACE_ENCHANT",
+    "description": "Fired when the the player must confirm an enchantment replacement in the trade window.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "enchantment"
+      },
+      {
+        "index": "2",
+        "type": "string",
+        "description": "item name"
+      }
+    ],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_REQUEST",
+    "description": "Fired when another player wishes to trade with you.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Player name"
+      }
+    ],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_REQUEST_CANCEL",
+    "description": "Fired when a trade attempt is cancelled.",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_SHOW",
+    "description": "Fired when the Trade window appears after a trade request has been accepted or auto-accepted",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_SKILL_CLOSE",
+    "description": "Fired when a trade skill window is closed.",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_SKILL_SHOW",
+    "description": "Fired when a trade skill window is opened.",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_SKILL_UPDATE",
+    "description": "Fired immediately after TRADE_SKILL_SHOW, after something is created via tradeskill, or anytime the tradeskill window is updated (filtered, tree folded/unfolded, etc.)",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_TARGET_ITEM_CHANGED",
+    "description": "Fired when a specific item will be altered during the trade.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Item"
+      }
+    ],
+    "category": "Trade"
+  },
+  {
+    "name": "TRADE_UPDATE",
+    "description": "Fired when the trade window is changed.",
+    "params": [],
+    "category": "Trade"
+  },
+  {
+    "name": "CRAFT_CLOSE",
+    "description": "Fired when a crafting skill window closes. Crafting skills are Enchanting, <craftSkill2>,...",
+    "params": [
+      {
+        "index": "1",
+        "type": "MouseButton",
+        "description": "The mouse button used to close the window."
+      }
+    ],
+    "category": "Tradeskill"
+  },
+  {
+    "name": "CRAFT_SHOW",
+    "description": "Fired when a crafting skill window opens. Crafting skills are Enchanting, <craftSkill2>,...",
+    "params": [
+      {
+        "index": "1",
+        "type": "MouseButton",
+        "description": "The mouse button used to open the window."
+      }
+    ],
+    "category": "Tradeskill"
+  },
+  {
+    "name": "CRAFT_UPDATE",
+    "description": "Fired when a crafting event is updating.",
+    "params": [],
+    "category": "Tradeskill"
+  },
+  {
+    "name": "UPDATE_TRADESKILL_RECAST",
+    "description": "",
+    "params": [],
+    "category": "Tradeskill"
+  },
+  {
+    "name": "TRAINER_CLOSED",
+    "description": "Fired when the trainer is closed.",
+    "params": [],
+    "category": "Trainer"
+  },
+  {
+    "name": "TRAINER_SHOW",
+    "description": "",
+    "params": [],
+    "category": "Trainer"
+  },
+  {
+    "name": "TRAINER_UPDATE",
+    "description": "Fired when the trainer window needs to update.",
+    "params": [],
+    "category": "Trainer"
+  },
+  {
+    "name": "UNIT_ATTACK",
+    "description": "Fired when a units attack is affected.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_ATTACK_POWER",
+    "description": "Fired when a unit's attack power changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_ATTACK_SPEED",
+    "description": "Fired when your attack speed is being listed or affected",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_AURA",
+    "description": "Fired when an buff, debuff, status, or item bonus was gained by or faded from a player, NPC, or mob. NOTE: This event is fired not only when a unit's buffs change, but when you change targets as well! -Myrrion",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) affected, ex. \"player\"."
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_AURASTATE",
+    "description": "Seems like the same as UNIT_AURA above (including arguments) but only for short buffs. As a Paladin, it was triggered each time I gained a 30 second buff (Paladin Seals), lost/canceled it, or switched targets from another player to myself. Needs more testing with other classes etc.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_CLASSIFICATION_CHANGED",
+    "description": "",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_COMBAT",
+    "description": "Fired when an npc or player participates in combat - TODO can arg3 be nil? - TODO Can arg5 be a union or enum?",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) affected, ex. \"player\"."
+      },
+      {
+        "index": "2",
+        "type": "CombatMessage",
+        "description": ""
+      },
+      {
+        "index": "3",
+        "type": "string",
+        "description": "Critical indicator (e.g. CRITICAL)"
+      },
+      {
+        "index": "4",
+        "type": "number",
+        "description": "The numeric damage"
+      },
+      {
+        "index": "5",
+        "type": "number",
+        "description": "Damage type in numeric value (0 - physical; 1 - holy; 2 - fire; 5 - shadow; 6 - arcane)"
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_COMBO_POINTS",
+    "description": "",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_DAMAGE",
+    "description": "Fired when the units melee damage changes. Be warned that this often gets fired multiple times, for example when you change weapons.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_DEFENSE",
+    "description": "Fired when a units defense is affected",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_DISPLAYPOWER",
+    "description": "Fired when the unit's mana stype is changed.",
+    "params": [
+      {
+        "index": "1",
+        "type": "string",
+        "description": "Unit name"
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_DYNAMIC_FLAGS",
+    "description": "Fired when the unit's flags are changed.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_ENERGY",
+    "description": "Fired whenever a units energy is affected.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "Name of the unit whose energy is affected. Seen unit names: player"
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_FACTION",
+    "description": "Fired when a target's faction is announced.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_FLAGS",
+    "description": "",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_HEALTH",
+    "description": "Fired whenever a units health is affected. It is so important that it gets called twice when it's about the player (might do the same for other things too)",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "Name of the unit whose health is affected. Seen : player, pet, target, mouseover, party1..4, partypet1..4"
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_LEVEL",
+    "description": "Fired whenever the level of a unit is submitted (e.g. when clicking a unit or someone joins the party)",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) entity whose level is submitted."
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MANA",
+    "description": "Fired whenever a unit's mana change either by usage or by regeneration. The event is also called when a unit is click on. Only gets called once, unlike its more important brother, UNIT_HEALTH.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) affected, ex. \"player\"."
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MAXENERGY",
+    "description": "Fired when a unit's maximum energy changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MAXHEALTH",
+    "description": "Fired when a unit's maximum health changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MAXMANA",
+    "description": "Fired when a unit's maximum mana changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MAXRAGE",
+    "description": "Fired when a unit's maximum rage changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_MODEL_CHANGED",
+    "description": "Fired when the unit's 3d model changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_NAME_UPDATE",
+    "description": "Fired when a unit's name changes.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "The [UnitID](lua://UnitId) of the entity whose name changed."
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_PORTRAIT_UPDATE",
+    "description": "Fired when a units portrait changes.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": ""
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_RAGE",
+    "description": "Fired whenever a units rage is affected.",
+    "params": [
+      {
+        "index": "1",
+        "type": "UnitId",
+        "description": "Unit whose rage is affected. Seen: player"
+      }
+    ],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_RANGEDDAMAGE",
+    "description": "Fired when a unit's ranged damage changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_RANGED_ATTACK_POWER",
+    "description": "Fired when a unit's ranged attack power changes.",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_RESISTANCES",
+    "description": "Fired when the units resistance changes",
+    "params": [],
+    "category": "Unit"
+  },
+  {
+    "name": "UNIT_STATS",
+    "description": "Fired when a units stats are being passed to the player/thing",
+    "params": [],
+    "category": "Unit"
+  }
+]

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Events Reference - 1.12.1</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="title static-prefix">WoW Codex</span>
+            <a href="../index.html">Home</a>
+            <a href="../textures/index.html">Textures</a>
+            <a href="../api/index.html">API</a>
+            <a href="index.html" class="active">Events</a>
+        </nav>
+    </header>
+
+    <main id="app">
+        <aside id="sidebar">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search Events..." autocomplete="off">
+            </div>
+            <nav id="tree">
+                <ul id="category-list"></ul>
+            </nav>
+        </aside>
+        <section id="content">
+            <div id="event-list">
+                <div class="loading">Loading Events data...</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

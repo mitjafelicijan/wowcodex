@@ -1,0 +1,28 @@
+--- Chat events listed exclusively in Chat, even if related to party/guild/etc.
+---@alias Event
+--- | EventActionBar
+--- | EventAuction
+--- | EventBattleground
+--- | EventBank
+--- | EventBuff
+--- | EventChat
+--- | EventCombat
+--- | EventDeath
+--- | EventGuild
+--- | EventHonor
+--- | EventItem
+--- | EventLoot
+--- | EventMail
+--- | EventMap
+--- | EventMisc
+--- | EventParty
+--- | EventPet
+--- | EventPlayer
+--- | EventQuest
+--- | EventSpell
+--- | EventSystem
+--- | EventTooltip
+--- | EventTrade
+--- | EventTradeskill
+--- | EventTrainer
+--- | EventUnit

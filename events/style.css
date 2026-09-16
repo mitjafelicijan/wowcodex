@@ -1,0 +1,126 @@
+#app {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+#sidebar {
+    width: 250px;
+    padding-right: 10px;
+    flex-shrink: 0;
+}
+
+#search-container {
+    margin-bottom: 15px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+#tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-group-header {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 0;
+}
+
+.category-item {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--primary-color);
+    padding: 3px 0;
+    list-style: none;
+}
+
+.category-item:hover {
+    text-decoration: underline;
+}
+
+.category-item.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#content {
+    flex: 1;
+}
+
+.api-entry {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.api-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.api-description {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.api-signature {
+    font-family: monospace;
+    font-size: 13px;
+    background: #eee;
+    padding: 1px 4px;
+    color: #000;
+}
+
+.api-params, .api-returns {
+    font-size: 13px;
+    color: #444;
+    margin-top: 10px;
+}
+
+.api-params ul, .api-returns ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+.api-params li, .api-returns li {
+    margin-bottom: 3px;
+}
+
+.api-params code, .api-returns code {
+    color: #000;
+    background: #eee;
+    padding: 1px 4px;
+    font-family: monospace;
+}
+
+.api-params small, .api-returns small {
+    color: #666;
+}
+
+.api-meta {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.loading, .no-results {
+    color: #666;
+    padding: 20px;
+}

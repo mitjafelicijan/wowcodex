@@ -39,9 +39,9 @@ def main():
     
     tree = build_tree(root_dir)
     
-    with open('explorer/manifest.json', 'w') as f:
+    with open('textures/manifest.json', 'w') as f:
         json.dump(tree, f, indent=2)
-    print("Manifest generated at explorer/manifest.json")
+    print("Manifest generated at textures/manifest.json")
 
 if __name__ == "__main__":
     main()
