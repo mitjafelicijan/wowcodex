@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Dungeon Gear - 1.12.1</title>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/general/favicon.png">
+    <script type="text/javascript" src="https://classicdb.ch/templates/wowhead/js/power.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="title static-prefix">WoW Codex</span>
+            <a href="/">Home</a>
+            <a href="/textures/">Textures</a>
+            <a href="/api/">API</a>
+            <a href="/events/">Events</a>
+            <a href="/library/">Library</a>
+            <a href="/dungeon-gear/" class="active">Dungeon Gear</a>
+        </nav>
+    </header>
+
+    <main id="app">
+        <aside id="sidebar">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search items or bosses..." autocomplete="off">
+            </div>
+            <nav id="tree">
+                <ul id="dungeon-list"></ul>
+            </nav>
+        </aside>
+        <section id="content">
+            <div id="filter-bar">
+                <select id="filter-boss">
+                    <option value="">All Bosses</option>
+                </select>
+                <select id="filter-class">
+                    <option value="">All Classes</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Hunter">Hunter</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Warrior">Warrior</option>
+                </select>
+                <select id="filter-type">
+                    <option value="">All Types</option>
+                    <optgroup label="Armor">
+                        <option value="Cloth">Cloth</option>
+                        <option value="Leather">Leather</option>
+                        <option value="Mail">Mail</option>
+                        <option value="Plate">Plate</option>
+                    </optgroup>
+                    <optgroup label="Weapons">
+                        <option value="Axe">Axe</option>
+                        <option value="Bow">Bow</option>
+                        <option value="Crossbow">Crossbow</option>
+                        <option value="Dagger">Dagger</option>
+                        <option value="Gun">Gun</option>
+                        <option value="Mace">Mace</option>
+                        <option value="Polearm">Polearm</option>
+                        <option value="Shield">Shield</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Sword">Sword</option>
+                        <option value="Thrown">Thrown</option>
+                        <option value="Wand">Wand</option>
+                        <option value="Fist Weapon">Fist Weapon</option>
+                    </optgroup>
+                    <optgroup label="Misc">
+                        <option value="Held In Off-hand">Held In Off-hand</option>
+                        <option value="Relic">Relic</option>
+                        <option value="Ring">Ring</option>
+                        <option value="Trinket">Trinket</option>
+                        <option value="Neck">Neck</option>
+                        <option value="Book">Book</option>
+                    </optgroup>
+                    <optgroup label="Professions">
+                        <option value="Alchemy">Alchemy</option>
+                        <option value="Blacksmithing">Blacksmithing</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Enchanting">Enchanting</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="First Aid">First Aid</option>
+                        <option value="Leatherworking">Leatherworking</option>
+                        <option value="Tailoring">Tailoring</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="loot-container">
+                <div class="loading">Loading Gear data...</div>
+            </div>
+        </section>
+    </main>
+
+    <template id="boss-template">
+        <div class="boss-section">
+            <h3 class="boss-name"></h3>
+            <div class="item-list"></div>
+        </div>
+    </template>
+
+    <template id="item-template">
+        <a class="item-entry item-link" href="" target="_blank" rel="">
+            <img class="item-icon" src="" alt="">
+            <div class="item-info">
+                <div class="item-name"></div>
+                <div class="item-description"></div>
+            </div>
+            <div class="item-meta-column">
+                <span class="item-quality"></span>
+                <div class="item-meta">
+                    <span class="item-id"></span>
+                    <span class="item-drop-rate"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+
+    <footer>
+        <h4>Legal Notice</h4>
+        <p>World of Warcraft®, Warcraft® and Blizzard Entertainment® are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the United States and/or other countries.</p>
+        <p>All assets, including but not limited to textures, interface files, and API reference data, are the sole and exclusive property of Blizzard Entertainment, Inc.</p>
+        <p>This project is a non-commercial, fan-made tool intended for personal use and creative exploration. It is not affiliated with, endorsed by, or sponsored by Blizzard Entertainment in any way. No ownership is claimed over any Blizzard Entertainment intellectual property.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
