@@ -8,7 +8,7 @@ include makext.mk
 # Default target
 help: .help
 
-all: manifest api events library gear # Run manifest, api, events, library and gear targets
+all: manifest api events library gear crafting # Run manifest, api, events, library, gear and crafting targets
 
 convert-textures: .assure # Convert BLP files to PNG
 	@echo "Converting BLP files from reference/Interface to data..."
@@ -34,6 +34,10 @@ gear: .assure # Update dungeon-gear/dungeon_gear.json from AtlasLoot
 	@echo "Generating gear data..."
 	@python3 tools/extract_dungeon_gear.py
 
+crafting: .assure # Update crafting/data.json from AtlasLoot
+	@echo "Generating crafting data..."
+	@python3 tools/extract_crafting.py
+
 serve: # Start a local web server on 8080
 	@echo "Starting server at http://localhost:8080..."
 	@python3 -m http.server 8080
@@ -48,6 +52,6 @@ convert-library: # Converts library books and documents to audio
 
 clean: # Remove all generated JSON files
 	@echo "Cleaning generated files..."
-	rm -f textures/manifest.json api/data.json events/data.json library/data.json dungeon-gear/dungeon_gear.json
+	rm -f textures/manifest.json api/data.json events/data.json library/data.json dungeon-gear/dungeon_gear.json crafting/data.json
 
-.PHONY: all convert-textures manifest api events library gear serve clean
+.PHONY: all convert-textures manifest api events library gear crafting serve clean

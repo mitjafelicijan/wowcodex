@@ -40,6 +40,12 @@ def extract_mappings(text_parsing_content):
     manual_mappings.update(slot_mappings)
     manual_mappings.update(profession_mappings)
     
+    # Missing common mappings
+    manual_mappings.update({
+        "#sr#": "Skill:",
+        "#lr#": "Level:"
+    })
+    
     mappings.update(manual_mappings)
     return mappings, class_mappings, type_mappings, slot_mappings, profession_mappings
 
@@ -71,9 +77,22 @@ def clean_text(text, mappings):
     text = re.sub(r'\|r', '', text)
     text = re.sub(r'=q\d+=', '', text)
     text = re.sub(r'=ds=', '', text)
+    text = re.sub(r'=so\d+=', '', text)
+    text = re.sub(r'=lr=', '', text)
     for k, v in mappings.items():
         text = text.replace(k, v)
+    text = re.sub(r'\s+', ' ', text)
     return text.strip(", ")
+
+def get_texture_map():
+    texture_map = {}
+    data_dir = "data/Interface/Icons"
+    if os.path.exists(data_dir):
+        for filename in os.listdir(data_dir):
+            if filename.endswith(".png"):
+                name_no_ext = filename[:-4]
+                texture_map[name_no_ext.lower()] = name_no_ext
+    return texture_map
 
 def extract_tags(text, class_mappings, type_mappings, profession_mappings):
     classes = []
@@ -103,9 +122,15 @@ def get_quality(text):
         return qualities.get(match.group(1), "Unknown")
     return "Unknown"
 
+def format_title(s):
+    # Inserts a space before every capital letter that is not the start of the string
+    # and not already preceded by a space or other separator
+    return re.sub(r'(?<!^)(?<!\s)(?<!\')(?<!\()(?<!\-)(?!$)(?=[A-Z])', ' ', s)
+
 def main():
     # Use relative paths from project root
     root = "reference/AtlasLoot/AtlasLoot"
+    texture_map = get_texture_map()
     boss_names = get_babble_translations(os.path.join(root, "Libs/Babble-Boss-2.2/Babble-Boss-2.2.lua"))
     zone_names = get_babble_translations(os.path.join(root, "Libs/Babble-Zone-2.2/Babble-Zone-2.2.lua"))
     atlas_names = get_babble_translations(os.path.join(root, "Locale/locale.en.lua"))
@@ -189,6 +214,10 @@ def main():
                         item_id = int(item_id_str)
                         if item_id == 0: continue
                         icon = parts[1].strip('"')
+                        # Correct icon casing if possible
+                        if icon.lower() in texture_map:
+                            icon = texture_map[icon.lower()]
+
                         name_raw = parts[2].strip('"')
                         desc_raw = parts[3].strip('"') if len(parts) > 3 else ""
                         drop_rate = parts[4].strip('"') if len(parts) > 4 else ""
@@ -247,6 +276,7 @@ def main():
         inst_name = zone_names.get(inst_key)
         if not inst_name:
             inst_name = normalized_zones.get(inst_key.replace("Ent", "").replace("Upper", "").replace("Lower", ""), inst_key)
+            inst_name = format_title(inst_name)
             if inst_key.endswith("Ent"): inst_name += " (Entrance)"
             elif inst_key.endswith("Upper"): inst_name += " (Upper)"
             elif inst_key.endswith("Lower"): inst_name += " (Lower)"

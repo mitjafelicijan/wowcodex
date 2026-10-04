@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Crafting Explorer - 1.12.1</title>
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/general/favicon.png">
+    <script type="text/javascript" src="https://classicdb.ch/templates/wowhead/js/power.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="title static-prefix">WoW Codex</span>
+            <a href="/">Home</a>
+            <a href="/textures/">Textures</a>
+            <a href="/api/">API</a>
+            <a href="/events/">Events</a>
+            <a href="/library/">Library</a>
+            <a href="/dungeon-gear/">Dungeon Gear</a>
+            <a href="/crafting/" class="active">Crafting</a>
+        </nav>
+    </header>
+
+    <main id="app">
+        <aside id="sidebar">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search recipes or items..." autocomplete="off">
+            </div>
+            <nav id="tree">
+                <ul id="profession-list"></ul>
+            </nav>
+        </aside>
+        <section id="content">
+            <div id="filter-bar">
+                <select id="filter-category">
+                    <option value="">All Categories</option>
+                </select>
+                <select id="filter-quality">
+                    <option value="">All Qualities</option>
+                    <option value="Common">Common</option>
+                    <option value="Uncommon">Uncommon</option>
+                    <option value="Rare">Rare</option>
+                    <option value="Epic">Epic</option>
+                </select>
+            </div>
+            <div id="recipe-container">
+                <div class="loading">Loading Crafting data...</div>
+            </div>
+        </section>
+    </main>
+
+    <template id="category-template">
+        <div class="category-section">
+            <h3 class="category-name"></h3>
+            <div class="item-list"></div>
+        </div>
+    </template>
+
+    <template id="item-template">
+        <a class="item-entry item-link" href="" target="_blank" rel="">
+            <img class="item-icon" src="" alt="">
+            <div class="item-info">
+                <div class="item-name"></div>
+                <div class="item-description"></div>
+            </div>
+            <div class="item-meta-column">
+                <span class="item-quality"></span>
+                <div class="item-meta">
+                    <span class="item-id"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+
+    <footer>
+        <h4>Legal Notice</h4>
+        <p>World of Warcraft®, Warcraft® and Blizzard Entertainment® are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the United States and/or other countries.</p>
+        <p>All assets, including but not limited to textures, interface files, and API reference data, are the sole and exclusive property of Blizzard Entertainment, Inc.</p>
+        <p>This project is a non-commercial, fan-made tool intended for personal use and creative exploration. It is not affiliated with, endorsed by, or sponsored by Blizzard Entertainment in any way. No ownership is claimed over any Blizzard Entertainment intellectual property.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
