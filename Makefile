@@ -30,18 +30,18 @@ library: .assure # Update library/data.json from reference SQL
 	@echo "Generating library data..."
 	@python3 tools/extract_books.py
 
-gear: .assure # Update dungeon-gear/dungeon_gear.json from AtlasLoot
+gear: .assure # Update dungeon-gear/data.json from AtlasLoot
 	@echo "Generating gear data..."
-	@python3 tools/extract_dungeon_gear.py
+	@lua5.4 tools/extract_dungeon_gear.lua > dungeon-gear/data.json
 
 crafting: .assure # Update crafting/data.json from AtlasLoot
 	@echo "Generating crafting data..."
-	@python3 tools/extract_crafting.py
+	@lua5.4 tools/extract_crafting.lua > crafting/data.json
 
-quests: .assure # Update dungeon-quests/dungeon_quests.json from reference files
+quests: .assure # Update dungeon-quests/data.json from reference files
 	@echo "Generating dungeon quest data..."
 	@mkdir -p dungeon-quests
-	@lua5.4 tools/extract_dungeon_quests.lua > dungeon-quests/dungeon_quests.json
+	@lua5.4 tools/extract_dungeon_quests.lua > dungeon-quests/data.json
 
 serve: # Start a local web server on 8080
 	@echo "Starting server at http://localhost:8080..."
@@ -57,6 +57,6 @@ convert-library: # Converts library books and documents to audio
 
 clean: # Remove all generated JSON files
 	@echo "Cleaning generated files..."
-	rm -f textures/manifest.json api/data.json events/data.json library/data.json dungeon-gear/dungeon_gear.json crafting/data.json dungeon-quests/dungeon_quests.json
+	rm -f textures/manifest.json api/data.json events/data.json library/data.json dungeon-gear/data.json crafting/data.json dungeon-quests/data.json
 
 .PHONY: all convert-textures manifest api events library gear crafting quests serve clean

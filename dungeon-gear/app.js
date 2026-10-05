@@ -3,7 +3,7 @@ let currentDungeon = '';
 
 async function init() {
     try {
-        const response = await fetch('dungeon_gear.json');
+        const response = await fetch('data.json');
         gearData = await response.json();
         
         renderDungeons();

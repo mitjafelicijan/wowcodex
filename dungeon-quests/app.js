@@ -2,7 +2,7 @@ let questData = null;
 
 async function init() {
     try {
-        const response = await fetch('dungeon_quests.json');
+        const response = await fetch('data.json');
         questData = await response.json();
         
         renderSidebar();
