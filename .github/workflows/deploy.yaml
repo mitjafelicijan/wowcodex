@@ -26,9 +26,18 @@ jobs:
         run: rm -rf tools Makefile makext.mk README.md
       - name: Inject Version into JS and HTML
         run: |
-          find . -name "*.js" -exec sed -i "s/data.json/data.json?v=${{ github.sha }}/g" {} +
-          find . -name "*.js" -exec sed -i "s/manifest.json/manifest.json?v=${{ github.sha }}/g" {} +
-          find . -name "*.html" -exec sed -i "s/\.js\">/\.js?v=${{ github.sha }}\">/g" {} +
+          # Inject version into fetch calls in JS files
+          find . -type f -name "*.js" -exec sed -i "s/data.json/data.json?v=${{ github.sha }}/g" {} +
+          find . -type f -name "*.js" -exec sed -i "s/manifest.json/manifest.json?v=${{ github.sha }}/g" {} +
+          
+          # Inject version into script tags in HTML files
+          find . -type f -name "*.html" -exec sed -i "s/\.js\"/\.js?v=${{ github.sha }}\"/g" {} +
+      - name: Verify Injection
+        run: |
+          echo "Checking for version in dungeon-gear/app.js:"
+          grep "data.json?v=" dungeon-gear/app.js || echo "Injection failed for app.js"
+          echo "Checking for version in dungeon-gear/index.html:"
+          grep "app.js?v=" dungeon-gear/index.html || echo "Injection failed for index.html"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
