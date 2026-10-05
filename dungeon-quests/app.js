@@ -124,10 +124,10 @@ function renderComplex(container, complex, useTree = false) {
         }
 
         if (useTree) {
-            renderQuestTree(questList, filteredQuests);
+            renderQuestTree(questList, filteredQuests, complex.complex);
         } else {
             filteredQuests.forEach(quest => {
-                renderQuest(questList, quest);
+                renderQuest(questList, quest, null, complex.complex);
             });
         }
     });
@@ -139,7 +139,7 @@ function renderComplex(container, complex, useTree = false) {
     }
 }
 
-function renderQuestTree(container, quests) {
+function renderQuestTree(container, quests, context) {
     const questMap = new Map();
     quests.forEach(q => {
         questMap.set(q.questId, { ...q, children: [] });
@@ -163,12 +163,12 @@ function renderQuestTree(container, quests) {
     });
 
     roots.forEach(root => {
-        renderRecursive(container, root, questMap);
+        renderRecursive(container, root, questMap, context);
     });
 }
 
-function renderRecursive(container, quest, questMap) {
-    const questElement = renderQuest(null, quest, questMap);
+function renderRecursive(container, quest, questMap, context) {
+    const questElement = renderQuest(null, quest, questMap, context);
     if (!questElement) return;
     
     container.appendChild(questElement);
@@ -178,13 +178,13 @@ function renderRecursive(container, quest, questMap) {
         if (childrenContainer) {
             childrenContainer.classList.remove('hidden');
             quest.children.forEach(child => {
-                renderRecursive(childrenContainer, child, questMap);
+                renderRecursive(childrenContainer, child, questMap, context);
             });
         }
     }
 }
 
-function renderQuest(container, quest, questMap = null) {
+function renderQuest(container, quest, questMap = null, context = null) {
     const questTemplate = document.getElementById('quest-template');
     if (!questTemplate) return null;
 
@@ -197,6 +197,22 @@ function renderQuest(container, quest, questMap = null) {
         link.href = `https://classicdb.ch/?quest=${quest.questId}`;
         link.rel = `quest=${quest.questId}`;
         link.textContent = quest.name;
+    }
+
+    // Watchlist toggle
+    const toggle = questElement.querySelector('.quest-watchlist-toggle');
+    if (toggle) {
+        const isWatched = Watchlist.isWatched('quests', quest.questId);
+        toggle.textContent = isWatched ? '★' : '☆';
+        if (isWatched) toggle.classList.add('watched');
+        
+        toggle.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const added = Watchlist.toggle('quests', quest.questId, quest, context);
+            toggle.textContent = added ? '★' : '☆';
+            toggle.classList.toggle('watched', added);
+        };
     }
     
     const levelEl = questElement.querySelector('.quest-level');

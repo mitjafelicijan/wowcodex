@@ -138,11 +138,29 @@ function renderBossSection(container, bossName, items) {
 
     items.forEach(item => {
         const itemClone = itemTemplate.content.cloneNode(true);
+        const itemElement = itemClone.querySelector('.item-entry');
         
         // Root link for tooltip
         const rootLink = itemClone.querySelector('.item-link');
         rootLink.href = `https://classicdb.ch/?item=${item.id}`;
         rootLink.rel = `item=${item.id}`;
+
+        // Watchlist toggle
+        const toggle = itemClone.querySelector('.item-watchlist-toggle');
+        if (toggle) {
+            const isWatched = Watchlist.isWatched('gear', item.id);
+            toggle.textContent = isWatched ? '★' : '☆';
+            if (isWatched) toggle.classList.add('watched');
+            
+            toggle.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const context = currentDungeon ? `${currentDungeon} - ${bossName}` : bossName;
+                const added = Watchlist.toggle('gear', item.id, item, context);
+                toggle.textContent = added ? '★' : '☆';
+                toggle.classList.toggle('watched', added);
+            };
+        }
 
         const nameEl = itemClone.querySelector('.item-name');
         nameEl.textContent = item.name;

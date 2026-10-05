@@ -127,6 +127,23 @@ function renderCategorySection(container, catName, items) {
         rootLink.href = `https://classicdb.ch/?${prefix}=${item.id}`;
         rootLink.rel = `${prefix}=${item.id}`;
 
+        // Watchlist toggle
+        const toggle = itemClone.querySelector('.item-watchlist-toggle');
+        if (toggle) {
+            const isWatched = Watchlist.isWatched('crafting', item.id);
+            toggle.textContent = isWatched ? '★' : '☆';
+            if (isWatched) toggle.classList.add('watched');
+            
+            toggle.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const context = currentProfession ? `${currentProfession} - ${catName}` : catName;
+                const added = Watchlist.toggle('crafting', item.id, item, context);
+                toggle.textContent = added ? '★' : '☆';
+                toggle.classList.toggle('watched', added);
+            };
+        }
+
         const nameEl = itemClone.querySelector('.item-name');
         nameEl.textContent = item.name;
         

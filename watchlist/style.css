@@ -1,0 +1,185 @@
+#app {
+    margin-top: 20px;
+}
+
+.watchlist-section {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+/* Common Styles */
+.toggle-star {
+    cursor: pointer;
+    user-select: none;
+    color: #f1c40f; /* Always yellow in watchlist */
+    font-size: 1.2em;
+    display: inline-block;
+    width: 1.2em;
+    text-align: center;
+}
+
+.toggle-star:hover {
+    color: #ccc;
+}
+
+.loading, .no-results {
+    color: #666;
+    padding: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Quest Styles (from dungeon-quests/style.css) */
+.quest-entry {
+    padding: 0;
+}
+
+.quest-main {
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.quest-entry:last-child > .quest-main {
+    border-bottom: none;
+}
+
+.quest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.quest-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.quest-header-meta {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.9em;
+}
+
+.quest-level { color: #666; }
+.quest-level::before { content: "Lvl "; }
+
+.quest-faction { font-weight: bold; }
+.faction-Horde { color: #c41e3a; }
+.faction-Alliance { color: #0070de; }
+.faction-Both { color: #a335ee; }
+
+.quest-heroic {
+    color: #ff8000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.quest-source, .item-source {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 4px;
+    font-style: italic;
+}
+
+.quest-description {
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* Item Styles (from dungeon-gear/style.css) */
+.item-container {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.item-container:last-child {
+    border-bottom: none;
+}
+
+.item-entry {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.item-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #333;
+    background: #000;
+    flex-shrink: 0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+
+.item-meta-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    min-width: 150px;
+}
+
+.item-quality {
+    font-size: 0.85em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.item-quality-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.item-description {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 2px;
+    line-height: 1.4;
+}
+
+.item-meta {
+    font-size: 0.8em;
+    color: #888;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.item-id::before { content: "ID: "; }
+.item-drop-rate:not(:empty)::before { content: "Drop: "; }
+
+/* WoW Quality Colors */
+.q-Poor { color: #9d9d9d; }
+.q-Common { color: #808080; }
+.q-Uncommon { color: #1eff00; }
+.q-Rare { color: #0070dd; }
+.q-Epic { color: #a335ee; }
+.q-Legendary { color: #ff8000; }
+.q-Artifact { color: #e6cc80; }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoW Dungeon Quests - 1.12.1</title>
+    <title>WoW Codex - Watchlist</title>
     <link rel="stylesheet" href="/base.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="/general/favicon.png">
@@ -18,46 +18,27 @@
             <a href="/api/">API</a>
             <a href="/events/">Events</a>
             <a href="/library/">Library</a>
-            <a href="/dungeon-quests/" class="active">Quests</a>
+            <a href="/dungeon-quests/">Quests</a>
             <a href="/dungeon-gear/">Gear</a>
             <a href="/crafting/">Crafting</a>
-            <a href="/watchlist/">Watchlist</a>
+            <a href="/watchlist/" class="active">Watchlist</a>
         </nav>
     </header>
 
     <main id="app">
-        <aside id="sidebar">
-            <div id="search-container">
-                <input type="search" id="search-input" placeholder="Search quests..." autocomplete="off">
-            </div>
-            <nav id="tree">
-                <div id="dungeon-tree">
-                    <div class="loading">Loading...</div>
-                </div>
-            </nav>
-        </aside>
         <section id="content">
-            <div id="filter-bar">
-                <select id="filter-faction">
-                    <option value="">All Factions</option>
-                    <option value="Alliance">Alliance</option>
-                    <option value="Horde">Horde</option>
-                    <option value="Both">Both</option>
-                </select>
-            </div>
-            <div id="quest-container">
-                <div class="loading">Select a dungeon to view quests.</div>
-            </div>
+            <h2 class="section-title">Quests</h2>
+            <div id="quests-watchlist" class="watchlist-section"></div>
+            
+            <h2 class="section-title">Dungeon Gear</h2>
+            <div id="gear-watchlist" class="watchlist-section"></div>
+            
+            <h2 class="section-title">Crafting</h2>
+            <div id="crafting-watchlist" class="watchlist-section"></div>
         </section>
     </main>
 
-    <template id="complex-template">
-        <div class="complex-section">
-            <h3 class="complex-name"></h3>
-            <div class="quest-list"></div>
-        </div>
-    </template>
-
+    <!-- Templates from Quests -->
     <template id="quest-template">
         <div class="quest-entry">
             <div class="quest-main">
@@ -67,16 +48,36 @@
                         <span class="quest-heroic hidden">Heroic</span>
                         <span class="quest-faction"></span>
                         <span class="quest-level"></span>
-                        <span class="quest-watchlist-toggle toggle-star">☆</span>
+                        <span class="quest-watchlist-toggle toggle-star">★</span>
                     </div>
                 </div>
+                <div class="quest-source"></div>
                 <div class="quest-description"></div>
-                <div class="quest-prereqs hidden">
-                    <strong>Prerequisites:</strong>
-                    <ul class="prereq-list"></ul>
-                </div>
             </div>
-            <div class="quest-children hidden"></div>
+        </div>
+    </template>
+
+    <!-- Templates from Gear/Crafting -->
+    <template id="item-template">
+        <div class="item-container">
+            <div class="item-source"></div>
+            <a class="item-entry item-link" href="" target="_blank" rel="">
+                <img class="item-icon" src="" alt="">
+                <div class="item-info">
+                    <div class="item-name"></div>
+                    <div class="item-description"></div>
+                </div>
+                <div class="item-meta-column">
+                    <div class="item-quality-row">
+                        <span class="item-quality"></span>
+                        <span class="item-watchlist-toggle toggle-star">★</span>
+                    </div>
+                    <div class="item-meta">
+                        <span class="item-id"></span>
+                        <span class="item-drop-rate"></span>
+                    </div>
+                </div>
+            </a>
         </div>
     </template>
 

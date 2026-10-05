@@ -18,9 +18,10 @@
             <a href="/api/">API</a>
             <a href="/events/">Events</a>
             <a href="/library/">Library</a>
-            <a href="/dungeon-quests/">Dungeon Quests</a>
-            <a href="/dungeon-gear/">Dungeon Gear</a>
+            <a href="/dungeon-quests/">Quests</a>
+            <a href="/dungeon-gear/">Gear</a>
             <a href="/crafting/" class="active">Crafting</a>
+            <a href="/watchlist/">Watchlist</a>
         </nav>
     </header>
 
@@ -67,7 +68,10 @@
                 <div class="item-description"></div>
             </div>
             <div class="item-meta-column">
-                <span class="item-quality"></span>
+                <div class="item-quality-row">
+                    <span class="item-quality"></span>
+                    <span class="item-watchlist-toggle toggle-star">☆</span>
+                </div>
                 <div class="item-meta">
                     <span class="item-id"></span>
                 </div>
@@ -82,6 +86,7 @@
         <p>This project is a non-commercial, fan-made tool intended for personal use and creative exploration. It is not affiliated with, endorsed by, or sponsored by Blizzard Entertainment in any way. No ownership is claimed over any Blizzard Entertainment intellectual property.</p>
     </footer>
 
+    <script src="/watchlist.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

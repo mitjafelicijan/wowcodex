@@ -139,6 +139,24 @@
     font-size: 0.9em;
 }
 
+.toggle-star {
+    cursor: pointer;
+    user-select: none;
+    color: #ccc;
+    font-size: 1.2em;
+    display: inline-block;
+    width: 1.2em;
+    text-align: center;
+}
+
+.toggle-star:hover {
+    color: #999;
+}
+
+.toggle-star.watched {
+    color: #f1c40f;
+}
+
 .quest-level {
     color: #666;
 }

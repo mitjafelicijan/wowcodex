@@ -145,6 +145,12 @@
     text-transform: uppercase;
 }
 
+.item-quality-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 .item-description {
     font-size: 0.9em;
     color: #444;
@@ -157,6 +163,25 @@
     color: #888;
     display: flex;
     gap: 8px;
+    align-items: center;
+}
+
+.toggle-star {
+    cursor: pointer;
+    user-select: none;
+    color: #ccc;
+    font-size: 1.2em;
+    display: inline-block;
+    width: 1.2em;
+    text-align: center;
+}
+
+.toggle-star:hover {
+    color: #999;
+}
+
+.toggle-star.watched {
+    color: #f1c40f;
 }
 
 .item-id::before { content: "ID: "; }
