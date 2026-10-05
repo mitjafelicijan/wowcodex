@@ -24,6 +24,11 @@ jobs:
           fetch-depth: 1
       - name: Remove development files
         run: rm -rf tools Makefile makext.mk README.md
+      - name: Inject Version into JS and HTML
+        run: |
+          find . -name "*.js" -exec sed -i "s/data.json/data.json?v=${{ github.sha }}/g" {} +
+          find . -name "*.js" -exec sed -i "s/manifest.json/manifest.json?v=${{ github.sha }}/g" {} +
+          find . -name "*.html" -exec sed -i "s/\.js\">/\.js?v=${{ github.sha }}\">/g" {} +
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
