@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="DUNGEONQUESTTRACKER_TOGGLE" header="BINDING_HEADER_DUNGEONQUESTTRACKER" runOnUp="false">
+		DungeonQuestTracker:Toggle()
+	</Binding>
+</Bindings>
